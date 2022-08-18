@@ -22,16 +22,16 @@ class Company(BaseModel):
     name: str
     platform: str
     redirect: str
-    created: datetime.datetime = None
-    lastSync: str = None
-    dataConnections: typing.List[DataConnection] = None
-    createdByUserName: str = None
-    key: str = None
-    env: str = None
+    created: typing.Optional[datetime.datetime] = None
+    lastSync: typing.Optional[str] = None
+    dataConnections: typing.Optional[typing.List[DataConnection]] = None
+    createdByUserName: typing.Optional[str] = None
+    key: str = ""
+    env: str = ""
 
     def _set_env_and_key(self, key: str, env: str):
-        self.key = key
-        self.env = env
+        self.key: str = key
+        self.env: str = env
 
     def get_connections(self) -> DataConnectionPaginatedResponse:
 

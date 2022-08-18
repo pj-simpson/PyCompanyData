@@ -13,7 +13,7 @@ class DataSetHandler(BaseHandler):
 
     def get_single_data_set(
         self, company_id: str, data_set_id: str
-    ) -> DataSetMetaDataPaginatedResponse:
+    ) -> DataSetMetadata:
         result = self.client.get(
             self.path + company_id + "/data/history/" + data_set_id
         )

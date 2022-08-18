@@ -11,7 +11,7 @@ class DataSetMetadata(BaseModel):
     connectionId: str
     dataType: str
     status: str
-    errorMessage: str = None
+    errorMessage: typing.Optional[str] = None
     requested: str
     progress: int
     isCompleted: bool

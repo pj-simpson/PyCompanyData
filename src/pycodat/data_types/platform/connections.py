@@ -9,8 +9,8 @@ from pycodat.data_types.platform.pagination import PaginatedResponse
 class DataConnectionError(BaseModel):
     statusCode: str
     erroredOnUtc: datetime.datetime
-    statusText: str = None
-    errorMessage: str = None
+    statusText: typing.Optional[str] = None
+    errorMessage: typing.Optional[str] = None
 
 
 class DataConnection(BaseModel):
@@ -20,10 +20,10 @@ class DataConnection(BaseModel):
     platformName: str
     linkUrl: str
     status: str
-    created: datetime.datetime = None
+    created: typing.Optional[datetime.datetime] = None
     sourceType: str
-    lastSync: datetime.datetime = None
-    DataConnectionErrors: typing.List[DataConnectionError] = None
+    lastSync: typing.Optional[datetime.datetime] = None
+    DataConnectionErrors: typing.Optional[typing.List[DataConnectionError]] = None
 
 
 class DataConnectionPaginatedResponse(PaginatedResponse):

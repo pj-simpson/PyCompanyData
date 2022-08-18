@@ -1,6 +1,6 @@
 import os
 from collections import namedtuple
-from typing import Any
+import typing
 from urllib.parse import urlencode
 
 import requests
@@ -32,7 +32,7 @@ class RestAdapter:
 
         self.headers = {"Authorization": f"Basic {key}"}
 
-    def get(self, path: str, **kwargs) -> Any:
+    def get(self, path: str, **kwargs) -> typing.Dict:
         if kwargs:
             query_params = urlencode(kwargs)
         else:

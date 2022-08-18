@@ -7,11 +7,11 @@ from pydantic import BaseModel
 class SyncSetting(BaseModel):
     dataType: str
     fetchOnFirstLink: bool
-    syncSchedule: int = None
-    syncOrder: int = None
-    syncFromUtc: datetime.datetime = None
-    syncFromWindow: int = None
-    monthsToSync: int = None
+    syncSchedule: typing.Optional[int] = None
+    syncOrder: typing.Optional[int] = None
+    syncFromUtc: typing.Optional[datetime.datetime] = None
+    syncFromWindow: typing.Optional[int] = None
+    monthsToSync: typing.Optional[int] = None
 
 
 class SyncSettings(BaseModel):

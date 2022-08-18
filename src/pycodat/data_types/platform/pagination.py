@@ -10,12 +10,12 @@ class LinkHref(BaseModel):
 class PaginationLinks(BaseModel):
     self: LinkHref
     current: LinkHref
-    next: LinkHref = None
-    previous: LinkHref = None
+    next: typing.Optional[LinkHref] = None
+    previous: typing.Optional[LinkHref] = None
 
 
 class PaginatedResponse(BaseModel):
-    pageNumber: int = None
-    pageSize: int = None
-    totalResults: int = None
+    pageNumber: typing.Optional[int] = None
+    pageSize: typing.Optional[int] = None
+    totalResults: typing.Optional[int] = None
     links: PaginationLinks = Field(None, alias="_links")

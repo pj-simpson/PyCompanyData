@@ -132,8 +132,8 @@ def companies():
                         )
                     ],
                     createdByUserName=None,
-                    key=None,
-                    env=None,
+                    key="",
+                    env="",
                 ),
                 Company(
                     id="bb304911-b193-4a27-bab9-69ab70b1d2f1",
@@ -166,8 +166,8 @@ def companies():
                         )
                     ],
                     createdByUserName=None,
-                    key=None,
-                    env=None,
+                    key="",
+                    env="",
                 ),
             ],
         )

@@ -1,4 +1,5 @@
 import datetime
+import typing 
 
 from pydantic import BaseModel
 
@@ -12,30 +13,30 @@ class DataTypeStatus(BaseModel):
 
 
 class DataStatus(BaseModel):
-    chartOfAccounts: DataTypeStatus = None
-    bills: DataTypeStatus = None
-    billPayments: DataTypeStatus = None
-    company: DataTypeStatus = None
-    creditNotes: DataTypeStatus = None
-    customers: DataTypeStatus = None
-    invoices: DataTypeStatus = None
-    journals: DataTypeStatus = None
-    journalEntries: DataTypeStatus = None
-    payments: DataTypeStatus = None
-    suppliers: DataTypeStatus = None
-    balanceSheet: DataTypeStatus = None
-    profitAndLoss: DataTypeStatus = None
-    taxRates: DataTypeStatus = None
-    items: DataTypeStatus = None
-    bankAccounts: DataTypeStatus = None
-    bankTransactions: DataTypeStatus = None
-    billCreditNotes: DataTypeStatus = None
-    trackingCategories: DataTypeStatus = None
-    cashFlowStatement: DataTypeStatus = None
-    purchaseOrders: DataTypeStatus = None
-    accountTransactions: DataTypeStatus = None
-    transfers: DataTypeStatus = None
-    directCosts: DataTypeStatus = None
-    directIncomes: DataTypeStatus = None
-    paymentMethods: DataTypeStatus = None
-    salesOrders: DataTypeStatus = None
+    chartOfAccounts: typing.Optional[DataTypeStatus] = None
+    bills: typing.Optional[DataTypeStatus] = None
+    billPayments: typing.Optional[DataTypeStatus] = None
+    company: typing.Optional[DataTypeStatus] = None
+    creditNotes: typing.Optional[DataTypeStatus] = None
+    customers: typing.Optional[DataTypeStatus] = None
+    invoices: typing.Optional[DataTypeStatus] = None
+    journals: typing.Optional[DataTypeStatus] = None
+    journalEntries: typing.Optional[DataTypeStatus] = None
+    payments: typing.Optional[DataTypeStatus] = None
+    suppliers: typing.Optional[DataTypeStatus] = None
+    balanceSheet: typing.Optional[DataTypeStatus] = None
+    profitAndLoss: typing.Optional[DataTypeStatus] = None
+    taxRates: typing.Optional[DataTypeStatus] = None
+    items: typing.Optional[DataTypeStatus] = None
+    bankAccounts: typing.Optional[DataTypeStatus] = None
+    bankTransactions: typing.Optional[DataTypeStatus] = None
+    billCreditNotes: typing.Optional[DataTypeStatus] = None
+    trackingCategories: typing.Optional[DataTypeStatus] = None
+    cashFlowStatement: typing.Optional[DataTypeStatus] = None
+    purchaseOrders: typing.Optional[DataTypeStatus] = None
+    accountTransactions: typing.Optional[DataTypeStatus] = None
+    transfers: typing.Optional[DataTypeStatus] = None
+    directCosts: typing.Optional[DataTypeStatus] = None
+    directIncomes: typing.Optional[DataTypeStatus] = None
+    paymentMethods: typing.Optional[DataTypeStatus] = None
+    salesOrders: typing.Optional[DataTypeStatus] = None

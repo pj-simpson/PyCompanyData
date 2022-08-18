@@ -23,7 +23,7 @@ def encode_key_to_base_64(key: str) -> str:
 
 
 class Codat:
-    def __init__(self, key: str, env: str = "prod"):
+    def __init__(self, key: str, env: str = "prod") -> None:
 
         encoded_key = encode_key_to_base_64(key)
         self.key = encoded_key
