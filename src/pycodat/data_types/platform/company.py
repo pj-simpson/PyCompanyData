@@ -11,7 +11,9 @@ from pycodat.data_types.platform.pagination import PaginatedResponse
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
 
+from ...handlers.platform.datastatushandler import DataStatusHandler
 from ...handlers.platform.syncsettingshandler import SyncSettingHandler
+from .datastatus import DataStatus
 from .syncsettings import SyncSettings
 
 
@@ -64,6 +66,11 @@ class Company(BaseModel):
             self.id, data_set_id
         )
         return data_set_metadata
+
+    def get_data_status(self) -> DataStatus:
+        data_status_handler = DataStatusHandler(self.key, self.env)
+        data_status = data_status_handler.get_company_data_status(self.id)
+        return data_status
 
 
 class CompanyPaginatedResponse(PaginatedResponse):

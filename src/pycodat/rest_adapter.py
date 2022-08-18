@@ -8,12 +8,14 @@ import requests.packages
 
 from .data_types.platform.exceptions import CodatException
 
-Environments = namedtuple("Environments", ["prod", "uat","dev"])
+Environments = namedtuple("Environments", ["prod", "uat", "dev"])
 
 
 class RestAdapter:
 
-    environments = Environments("api.codat.io", "api-uat.codat.io", os.getenv('CODAT_DEV_ENV','api.codat.io'))
+    environments = Environments(
+        "api.codat.io", "api-uat.codat.io", os.getenv("CODAT_DEV_ENV", "api.codat.io")
+    )
 
     def __init__(self, host: str, key: str) -> None:
         try:

@@ -6,18 +6,21 @@ from pycodat.data_types.platform.connections import (
     DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata, DataSetMetaDataPaginatedResponse)
+from pycodat.data_types.platform.datastatus import DataStatus
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.platform.companyhandler import CompanyHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycodat.handlers.platform.datastatushandler import DataStatusHandler
 from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
-def encode_key_to_base_64(key:str) -> str:
-        key_bytes = key.encode('ascii')
-        base64_key = base64.b64encode(key_bytes)
-        base64_key_string = base64_key.decode('ascii')
-        return base64_key_string
+def encode_key_to_base_64(key: str) -> str:
+    key_bytes = key.encode("ascii")
+    base64_key = base64.b64encode(key_bytes)
+    base64_key_string = base64_key.decode("ascii")
+    return base64_key_string
+
 
 class Codat:
     def __init__(self, key: str, env: str = "prod"):
@@ -38,7 +41,7 @@ class Codat:
         return company
 
     # TODO Get Settings
-    # doesnt seem that important - might skip this for now. 
+    # doesnt seem that important - might skip this for now.
 
     def get_sync_settings(self, company_id: str) -> SyncSettings:
 
@@ -75,5 +78,10 @@ class Codat:
         )
         return data_set_metadata
 
-    # TODO Get Data Status?
-    # TODO Add Tox
+    def get_data_status(self, company_id: str) -> DataStatus:
+        data_status_handler = DataStatusHandler(self.key, self.env)
+        data_status = data_status_handler.get_company_data_status(company_id)
+        return data_status
+
+    # TODO Add Tox... maybe later
+    # TODO research docs

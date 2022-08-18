@@ -8,11 +8,13 @@ from pycodat.data_types.platform.connections import (
     DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata, DataSetMetaDataPaginatedResponse)
+from pycodat.data_types.platform.datastatus import DataStatus
 from pycodat.data_types.platform.exceptions import CodatException
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.platform.companyhandler import CompanyHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycodat.handlers.platform.datastatushandler import DataStatusHandler
 from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 from pycodat.main import Codat
 
@@ -22,7 +24,7 @@ class TestMainClass:
         codat = Codat(key=basic_auth_key, env="uat")
         assert codat.key == encoded_auth_key
         assert codat.env == "uat"
-    
+
     def test_main_class_init_not_env_supplied(self, basic_auth_key, encoded_auth_key):
         codat = Codat(key=basic_auth_key)
         assert codat.key == encoded_auth_key
@@ -101,7 +103,9 @@ class TestMainClass:
             codat = Codat(key=basic_auth_key, env="prod")
             result = codat.get_data_set()
 
-    def test_get_sync_settings(self, basic_auth_key, monkeypatch, sync_settings, random_guid):
+    def test_get_sync_settings(
+        self, basic_auth_key, monkeypatch, sync_settings, random_guid
+    ):
         monkeypatch.setattr(SyncSettingHandler, "get_sync_settings", sync_settings)
         codat = Codat(key=basic_auth_key, env="prod")
         result = codat.get_sync_settings(random_guid)
@@ -111,3 +115,16 @@ class TestMainClass:
         with pytest.raises(TypeError):
             codat = Codat(key=basic_auth_key, env="prod")
             result = codat.get_sync_settings()
+
+    def test_get_data_status(
+        self, basic_auth_key, monkeypatch, data_status, random_guid
+    ):
+        monkeypatch.setattr(DataStatusHandler, "get_company_data_status", data_status)
+        codat = Codat(key=basic_auth_key, env="prod")
+        result = codat.get_data_status(random_guid)
+        assert type(result) == DataStatus
+
+    def test_test_get_data_status_no_id_supplied(self, basic_auth_key):
+        with pytest.raises(TypeError):
+            codat = Codat(key=basic_auth_key, env="prod")
+            result = codat.get_data_status()

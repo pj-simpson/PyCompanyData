@@ -6,10 +6,12 @@ from pycodat.data_types.platform.connections import (
     DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata, DataSetMetaDataPaginatedResponse)
+from pycodat.data_types.platform.datastatus import DataStatus
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.platform.companyhandler import CompanyHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycodat.handlers.platform.datastatushandler import DataStatusHandler
 from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 from pycodat.rest_adapter import RestAdapter
 
@@ -129,3 +131,25 @@ class TestSyncSettingHandlers:
         result = handler.get_sync_settings(company_id)
 
         assert type(result) == SyncSettings
+
+
+class TestDataStatusHandlers:
+    def test_data_status_handler_init(self, basic_auth_key):
+        handler = DataStatusHandler(basic_auth_key, "prod")
+        assert handler.path == "/companies/"
+        assert type(handler.client) == RestAdapter
+
+    def test_data_status_handler_get_sync_settings(
+        self,
+        monkeypatch,
+        data_status_raw_json,
+        basic_auth_key,
+        random_guid,
+    ):
+        monkeypatch.setattr(RestAdapter, "get", data_status_raw_json)
+        handler = DataStatusHandler(basic_auth_key, "prod")
+        company_id = random_guid()
+
+        result = handler.get_company_data_status(company_id)
+
+        assert type(result) == DataStatus
