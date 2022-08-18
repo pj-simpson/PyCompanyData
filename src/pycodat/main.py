@@ -76,5 +76,4 @@ class Codat:
         return data_set_metadata
 
     # TODO Get Data Status?
-    # TODO Add pre-commit hooks
-    # TODO Add MyPy
+    # TODO Add Tox
