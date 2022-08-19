@@ -8,6 +8,8 @@ authors = ["Peter Simpson <p.simpson@codat.io>"]
 python = "^3.10"
 requests = "^2.28.1"
 pydantic = "^1.9.2"
+Sphinx = "^5.1.1"
+sphinx-rtd-theme = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

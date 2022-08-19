@@ -1,7 +1,6 @@
 import typing
 
-from pycodat.data_types.platform.company import (Company,
-                                                 CompanyPaginatedResponse)
+from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
 from pycodat.handlers.base import BaseHandler
 
 
@@ -16,8 +15,8 @@ class CompanyHandler(BaseHandler):
 
     path = "/companies/"
 
-    def get_all_companies(self) -> CompanyPaginatedResponse:
-        result = self.client.get(self.path)
+    def get_all_companies(self,**kwargs) -> CompanyPaginatedResponse:
+        result = self.client.get(self.path,**kwargs)
         company = CompanyPaginatedResponse(**result)
         # hack to pass the key and env so the companies so they can instatiate handlers make rest calls
         set_env_and_keys_for_many_companies(company.results, self.key, self.env)

@@ -34,6 +34,7 @@ class RestAdapter:
 
     def get(self, path: str, **kwargs) -> typing.Dict:
         if kwargs:
+            # TODO helper function here to check for valid kwargs/ or limit kwargs at a higher level
             query_params = urlencode(kwargs)
         else:
             query_params = ""
