@@ -1,14 +1,13 @@
-.. pycodat documentation master file, created by
-   sphinx-quickstart on Thu Aug 18 17:46:28 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to pycodat's documentation!
+Welcome to PyCodat's documentation!
 ===================================
+.. autoclass:: pycodat.main.Codat
+    :members:
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+intro
 
 
 
