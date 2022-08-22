@@ -10,7 +10,7 @@ Quickstart
 
 .. code-block:: python
     
-    from pycodat.main import Codat
+    from pycodat import Codat
     
     # create an instace of the main Codat class
     codat_client = Codat('your_organizations_api_key')

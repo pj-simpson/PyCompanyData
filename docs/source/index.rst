@@ -1,7 +1,8 @@
 Welcome to PyCodat's documentation!
 ===================================
-.. autoclass:: pycodat.main.Codat
+.. autoclass:: pycodat.Codat
     :members:
+    :inherited-members:
 
 .. toctree::
    :maxdepth: 2
