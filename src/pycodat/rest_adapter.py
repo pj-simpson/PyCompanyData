@@ -1,6 +1,6 @@
 import os
-from collections import namedtuple
 import typing
+from collections import namedtuple
 from urllib.parse import urlencode
 
 import requests

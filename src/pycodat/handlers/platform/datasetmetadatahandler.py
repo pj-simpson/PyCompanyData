@@ -9,8 +9,10 @@ class DataSetHandler(BaseHandler):
 
     path = "/companies/"
 
-    def get_all_data_sets(self, company_id: str,**kwargs) -> DataSetMetaDataPaginatedResponse:
-        result = self.client.get(self.path + company_id + "/data/history",**kwargs)
+    def get_all_data_sets(
+        self, company_id: str, **kwargs
+    ) -> DataSetMetaDataPaginatedResponse:
+        result = self.client.get(self.path + company_id + "/data/history", **kwargs)
         return DataSetMetaDataPaginatedResponse(**result)
 
     def get_single_data_set(self, company_id: str, data_set_id: str) -> DataSetMetadata:
