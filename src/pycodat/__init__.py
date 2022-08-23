@@ -1,9 +1,9 @@
 __version__ = "0.1.0"
 
-from pycodat.clients.platform_client import PlatformClient
+from pycodat.clients.accounting_client import AccountingClient
 
 
-class Codat(PlatformClient):
+class Codat(AccountingClient):
     """The main class which acts as an interface to the Codat API."""
 
     pass
