@@ -4,12 +4,12 @@ from pydantic import BaseModel, Field
 
 
 class LinkHref(BaseModel):
-    href: str
+    href: typing.Optional[str] = None
 
 
 class PaginationLinks(BaseModel):
-    self: LinkHref
-    current: LinkHref
+    self: typing.Optional[LinkHref] = None
+    current: typing.Optional[LinkHref] = None
     next: typing.Optional[LinkHref] = None
     previous: typing.Optional[LinkHref] = None
 

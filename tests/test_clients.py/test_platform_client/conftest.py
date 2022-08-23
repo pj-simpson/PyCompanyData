@@ -11,7 +11,7 @@ from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata, DataSetMetaDataPaginatedResponse)
 from pycodat.data_types.platform.datastatus import DataStatus, DataTypeStatus
 from pycodat.data_types.platform.exceptions import CodatException
-from pycodat.data_types.platform.pagination import LinkHref, PaginationLinks
+from pycodat.data_types.pagination import LinkHref, PaginationLinks
 from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings
 from pycodat.rest_adapter import RestAdapter
 

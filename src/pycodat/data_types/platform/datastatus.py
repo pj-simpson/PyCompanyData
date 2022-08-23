@@ -6,10 +6,10 @@ from pydantic import BaseModel
 
 class DataTypeStatus(BaseModel):
     dataType: str
-    lastSuccessfulSync: datetime.datetime
-    currentStatus: str
-    latestSyncId: str
-    latestSuccessfulSyncId: str
+    lastSuccessfulSync: typing.Optional[datetime.datetime] = None
+    currentStatus: typing.Optional[str] = None
+    latestSyncId: typing.Optional[str] = None
+    latestSuccessfulSyncId: typing.Optional[str] = None
 
 
 class DataStatus(BaseModel):

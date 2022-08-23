@@ -7,7 +7,7 @@ from pycodat.data_types.platform.connections import (
     DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata, DataSetMetaDataPaginatedResponse)
-from pycodat.data_types.platform.pagination import PaginatedResponse
+from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
 

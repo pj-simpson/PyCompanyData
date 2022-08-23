@@ -5,10 +5,10 @@ from pydantic import BaseModel
 
 
 class SyncSetting(BaseModel):
-    dataType: str
+    dataType: typing.Optional[str] = None
     fetchOnFirstLink: bool
-    syncSchedule: typing.Optional[int] = None
-    syncOrder: typing.Optional[int] = None
+    syncSchedule: int
+    syncOrder: int
     syncFromUtc: typing.Optional[datetime.datetime] = None
     syncFromWindow: typing.Optional[int] = None
     monthsToSync: typing.Optional[int] = None
@@ -17,5 +17,5 @@ class SyncSetting(BaseModel):
 class SyncSettings(BaseModel):
 
     companyId: str
-    settings: typing.List[SyncSetting]
+    settings: typing.Optional[typing.List[SyncSetting]] = None
     overridesDefaults: bool
