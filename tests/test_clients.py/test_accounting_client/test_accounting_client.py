@@ -1,3 +1,7 @@
+from pycodat.data_types.accounting.account_transactions import AccountTransaction
+from pycodat.handlers.accounting.account_transaction_handler import (
+    AccountTransactionHandler,
+)
 import pytest
 
 from pycodat.clients.accounting_client import AccountingClient
@@ -33,3 +37,18 @@ class TestAccountingClientClass:
         codat = AccountingClient(key=basic_auth_key, env="prod")
         result = codat.get_account(random_guid, random_guid)
         assert type(result) == Account
+
+    # def test_get_account_transactions():
+    #     pass
+
+    def test_get_account_transaction(
+        self, basic_auth_key, monkeypatch, account_transaction, random_guid
+    ):
+        monkeypatch.setattr(
+            AccountTransactionHandler,
+            "get_single_account_transaction",
+            account_transaction,
+        )
+        codat = AccountingClient(key=basic_auth_key, env="prod")
+        result = codat.get_account_transaction(random_guid, random_guid, random_guid)
+        assert type(result) == AccountTransaction

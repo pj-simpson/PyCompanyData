@@ -1,4 +1,11 @@
 import datetime
+from pycodat.data_types.accounting.account_transactions import (
+    AccountTransaction,
+    BankAccountRef,
+    Line,
+    Metadata,
+    RecordRef,
+)
 
 import pytest
 
@@ -89,3 +96,33 @@ def account():
         )
 
     return _account
+
+
+@pytest.fixture
+def account_transaction():
+    def _account_transaction(*args, **kwargs):
+        return AccountTransaction(
+            id="85",
+            transactionId="85",
+            note="Opening Balance from Bank",
+            bankAccountRef=BankAccountRef(id="57", name="Visa Credit Card"),
+            date=datetime.datetime(2019, 8, 21, 0, 0),
+            status="Unknown",
+            currency="GBP",
+            currencyRate=1,
+            lines=[
+                Line(
+                    description="Opening Balance from Bank",
+                    recordRef=RecordRef(id="PUR-85", dataType="directCosts"),
+                    amount=-3831,
+                )
+            ],
+            totalAmount=-3831,
+            modifiedDate=datetime.datetime(2022, 7, 15, 14, 19, 8),
+            sourceModifiedDate=datetime.datetime(
+                2020, 9, 21, 18, 13, 7, tzinfo=datetime.timezone.utc
+            ),
+            metadata=Metadata(isDeleted=False),
+        )
+
+    return _account_transaction
