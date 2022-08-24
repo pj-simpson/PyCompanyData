@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def companies_raw_json():
     def _companies_raw_json(*args, **kwargs):
@@ -49,6 +50,7 @@ def companies_raw_json():
 
     return _companies_raw_json
 
+
 @pytest.fixture
 def company_raw_json():
     def _company_raw_json(*args, **kwargs):
@@ -84,6 +86,7 @@ def company_raw_json():
         }
 
     return _company_raw_json
+
 
 @pytest.fixture
 def connection_raw_json():
@@ -150,7 +153,6 @@ def connections_raw_json():
     return _connections_raw_json
 
 
-
 @pytest.fixture
 def data_sets_raw_json():
     def _data_sets_raw_json(*args, **kwargs):
@@ -184,6 +186,7 @@ def data_sets_raw_json():
 
     return _data_sets_raw_json
 
+
 @pytest.fixture
 def data_set_raw_json():
     def _data_set_raw_json(*args, **kwargs):
@@ -203,6 +206,7 @@ def data_set_raw_json():
         }
 
     return _data_set_raw_json
+
 
 @pytest.fixture
 def sync_settings_raw_json():
