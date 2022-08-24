@@ -3,6 +3,7 @@ import uuid
 
 import pytest
 
+from pycodat.data_types.pagination import LinkHref, PaginationLinks
 from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
 from pycodat.data_types.platform.connections import (
     DataConnection,
@@ -15,7 +16,6 @@ from pycodat.data_types.platform.datasetmetadata import (
 )
 from pycodat.data_types.platform.datastatus import DataStatus, DataTypeStatus
 from pycodat.data_types.platform.exceptions import CodatException
-from pycodat.data_types.pagination import LinkHref, PaginationLinks
 from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings
 from pycodat.rest_adapter import RestAdapter
 

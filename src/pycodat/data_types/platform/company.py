@@ -1,10 +1,10 @@
 import datetime
 import typing
-from pycodat.data_types.accounting.accounts import AccountsPaginatedResponse
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 from pydantic import BaseModel
 
+from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionPaginatedResponse,
@@ -13,7 +13,7 @@ from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
 )
-from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
 
@@ -77,12 +77,18 @@ class Company(BaseModel):
         data_status_handler = DataStatusHandler(self.key, self.env)
         data_status = data_status_handler.get_company_data_status(self.id)
         return data_status
-    
+
     def get_accounts(self, **kwargs) -> AccountsPaginatedResponse:
 
         connection_handler = AccountsHandler(self.key, self.env)
         connection = connection_handler.get_all_accounts(self.id, **kwargs)
         return connection
+
+    def get_account(self, account_id: str) -> Account:
+
+        accounts_handler = AccountsHandler(self.key, self.env)
+        account = accounts_handler.get_single_account(self.id, account_id)
+        return account
 
 
 class CompanyPaginatedResponse(PaginatedResponse):

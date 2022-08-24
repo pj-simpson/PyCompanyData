@@ -6,7 +6,7 @@ from pycodat.handlers.base import BaseHandler
 
 
 class ConnectionHandler(BaseHandler):
-    path = "/companies/"
+    path = "companies/"
 
     def get_company_connections(
         self, company_id: str, **kwargs

@@ -1,7 +1,8 @@
-from pycodat.clients.accounting_client import AccountingClient
-from pycodat.data_types.accounting.accounts import AccountsPaginatedResponse
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 import pytest
+
+from pycodat.clients.accounting_client import AccountingClient
+from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 
 class TestAccountingClientClass:
@@ -10,7 +11,9 @@ class TestAccountingClientClass:
         assert codat.key == encoded_auth_key
         assert codat.env == "uat"
 
-    def test_accounting_class_init_not_env_supplied(self, basic_auth_key, encoded_auth_key):
+    def test_accounting_class_init_not_env_supplied(
+        self, basic_auth_key, encoded_auth_key
+    ):
         codat = AccountingClient(key=basic_auth_key)
         assert codat.key == encoded_auth_key
         assert codat.env == "prod"
@@ -24,3 +27,9 @@ class TestAccountingClientClass:
         codat = AccountingClient(key=basic_auth_key, env="prod")
         result = codat.get_accounts(random_guid)
         assert type(result) == AccountsPaginatedResponse
+
+    def test_get_account(self, basic_auth_key, monkeypatch, account, random_guid):
+        monkeypatch.setattr(AccountsHandler, "get_single_account", account)
+        codat = AccountingClient(key=basic_auth_key, env="prod")
+        result = codat.get_account(random_guid, random_guid)
+        assert type(result) == Account

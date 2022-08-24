@@ -7,7 +7,7 @@ from pycodat.handlers.base import BaseHandler
 
 class DataSetHandler(BaseHandler):
 
-    path = "/companies/"
+    path = "companies/"
 
     def get_all_data_sets(
         self, company_id: str, **kwargs

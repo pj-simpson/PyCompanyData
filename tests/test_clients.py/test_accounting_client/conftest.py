@@ -1,7 +1,9 @@
+import datetime
+
+import pytest
+
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.data_types.pagination import LinkHref, PaginationLinks
-import pytest
-import datetime
 
 
 @pytest.fixture
@@ -62,3 +64,28 @@ def accounts():
         )
 
     return _accounts
+
+
+@pytest.fixture
+def account():
+    def _account(*args, **kwargs):
+        return Account(
+            id="1b6266d1-1e44-46c5-8eb5-a8f98e03124e",
+            nominalCode="610",
+            name="Accounts Receivable",
+            description="Invoices the business has issued but has not yet collected payment on.",
+            fullyQualifiedCategory="Asset.Current",
+            fullyQualifiedName="Asset.Current.Accounts Receivable",
+            currency="GBP",
+            currentBalance=0,
+            type="Asset",
+            status="Active",
+            isBankAccount=False,
+            modifiedDate=datetime.datetime(
+                2022, 8, 15, 7, 49, 33, tzinfo=datetime.timezone.utc
+            ),
+            sourceModifiedDate=datetime.datetime(2021, 9, 22, 17, 28, 5),
+            validDatatypeLinks=[],
+        )
+
+    return _account
