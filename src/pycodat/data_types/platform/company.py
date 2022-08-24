@@ -1,5 +1,7 @@
 import datetime
 import typing
+from pycodat.data_types.accounting.accounts import AccountsPaginatedResponse
+from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 from pydantic import BaseModel
 
@@ -75,6 +77,12 @@ class Company(BaseModel):
         data_status_handler = DataStatusHandler(self.key, self.env)
         data_status = data_status_handler.get_company_data_status(self.id)
         return data_status
+    
+    def get_accounts(self, **kwargs) -> AccountsPaginatedResponse:
+
+        connection_handler = AccountsHandler(self.key, self.env)
+        connection = connection_handler.get_all_accounts(self.id, **kwargs)
+        return connection
 
 
 class CompanyPaginatedResponse(PaginatedResponse):

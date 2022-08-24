@@ -22,17 +22,17 @@ from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class TestPlatformClientClass:
-    def test_main_class_init(self, basic_auth_key, encoded_auth_key):
+    def test_platform_class_init(self, basic_auth_key, encoded_auth_key):
         codat = PlatformClient(key=basic_auth_key, env="uat")
         assert codat.key == encoded_auth_key
         assert codat.env == "uat"
 
-    def test_main_class_init_not_env_supplied(self, basic_auth_key, encoded_auth_key):
+    def test_platform_class_init_not_env_supplied(self, basic_auth_key, encoded_auth_key):
         codat = PlatformClient(key=basic_auth_key)
         assert codat.key == encoded_auth_key
         assert codat.env == "prod"
 
-    def test_main_class_init_missing_key(self):
+    def test_platform_class_init_missing_key(self):
         with pytest.raises(TypeError):
             codat = PlatformClient(env="prod")
 
