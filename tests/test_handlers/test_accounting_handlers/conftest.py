@@ -59,3 +59,39 @@ def account_raw_json():
         }
 
     return _account_raw_json
+
+
+@pytest.fixture
+def account_transaction_raw_json():
+    def _account_transaction_raw_json(*args, **kwargs):
+        return {
+  "id": "string",
+  "transactionId": "string",
+  "note": "string",
+  "bankAccountRef": {
+    "id": "string",
+    "name": "string"
+  },
+  "date": "2022-08-24T19:01:30.019Z",
+  "status": "Unknown",
+  "currency": "string",
+  "currencyRate": 0,
+  "lines": [
+    {
+      "description": "string",
+      "recordRef": {
+        "id": "string",
+        "dataType": "string"
+      },
+      "amount": 0
+    }
+  ],
+  "totalAmount": 0,
+  "modifiedDate": "2022-08-24T19:01:30.019Z",
+  "sourceModifiedDate": "2022-08-24T19:01:30.019Z",
+  "metadata": {
+    "isDeleted": True
+  }
+}
+
+    return _account_transaction_raw_json
