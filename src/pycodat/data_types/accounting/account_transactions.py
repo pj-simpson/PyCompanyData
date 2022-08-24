@@ -1,6 +1,9 @@
 import datetime
-from pydantic import BaseModel
 import typing
+
+from pydantic import BaseModel
+
+from pycodat.data_types.pagination import PaginatedResponse
 
 
 class BankAccountRef(BaseModel):
@@ -14,8 +17,8 @@ class RecordRef(BaseModel):
 
 
 class Line(BaseModel):
-    description: str
-    recordRef: RecordRef
+    description: typing.Optional[str]
+    recordRef: typing.Optional[RecordRef]
     amount: int
 
 
@@ -37,3 +40,7 @@ class AccountTransaction(BaseModel):
     modifiedDate: typing.Optional[datetime.datetime]
     sourceModifiedDate: typing.Optional[datetime.datetime]
     metadata: typing.Optional[Metadata]
+
+
+class AccountTransactionsPaginatedResponse(PaginatedResponse):
+    results: typing.List[AccountTransaction] = []

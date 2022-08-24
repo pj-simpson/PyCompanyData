@@ -1,11 +1,14 @@
-from pycodat.data_types.accounting.account_transactions import AccountTransaction
-from pycodat.handlers.accounting.account_transaction_handler import (
-    AccountTransactionHandler,
-)
 import pytest
 
 from pycodat.clients.accounting_client import AccountingClient
+from pycodat.data_types.accounting.account_transactions import (
+    AccountTransaction,
+    AccountTransactionsPaginatedResponse,
+)
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.handlers.accounting.account_transaction_handler import (
+    AccountTransactionHandler,
+)
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 
@@ -38,8 +41,17 @@ class TestAccountingClientClass:
         result = codat.get_account(random_guid, random_guid)
         assert type(result) == Account
 
-    # def test_get_account_transactions():
-    #     pass
+    def test_get_account_transactions(
+        self, basic_auth_key, monkeypatch, account_transactions, random_guid
+    ):
+        monkeypatch.setattr(
+            AccountTransactionHandler,
+            "get_all_account_transactions",
+            account_transactions,
+        )
+        codat = AccountingClient(key=basic_auth_key, env="prod")
+        result = codat.get_account_transactions(random_guid, random_guid)
+        assert type(result) == AccountTransactionsPaginatedResponse
 
     def test_get_account_transaction(
         self, basic_auth_key, monkeypatch, account_transaction, random_guid

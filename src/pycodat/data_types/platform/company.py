@@ -3,6 +3,10 @@ import typing
 
 from pydantic import BaseModel
 
+from pycodat.data_types.accounting.account_transactions import (
+    AccountTransaction,
+    AccountTransactionsPaginatedResponse,
+)
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.connections import (
@@ -12,6 +16,9 @@ from pycodat.data_types.platform.connections import (
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
+)
+from pycodat.handlers.accounting.account_transaction_handler import (
+    AccountTransactionHandler,
 )
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
@@ -89,6 +96,28 @@ class Company(BaseModel):
         accounts_handler = AccountsHandler(self.key, self.env)
         account = accounts_handler.get_single_account(self.id, account_id)
         return account
+
+    def get_account_transactions(
+        self, connection_id: str
+    ) -> AccountTransactionsPaginatedResponse:
+
+        account_transaction_handler = AccountTransactionHandler(self.key, self.env)
+        account_transactions = account_transaction_handler.get_all_account_transactions(
+            self.id, connection_id
+        )
+        return account_transactions
+
+    def get_account_transaction(
+        self, connection_id: str, account_transaction_id: str
+    ) -> AccountTransaction:
+
+        account_transaction_handler = AccountTransactionHandler(self.key, self.env)
+        account_transaction = (
+            account_transaction_handler.get_single_account_transaction(
+                self.id, connection_id, account_transaction_id
+            )
+        )
+        return account_transaction
 
 
 class CompanyPaginatedResponse(PaginatedResponse):
