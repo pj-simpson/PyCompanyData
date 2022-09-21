@@ -7,8 +7,6 @@ from pycodat.handlers.base import BaseHandler
 
 class AccountTransactionHandler(BaseHandler):
 
-    path = "companies/"
-
     def get_all_account_transactions(
         self, company_id: str, connection_id: str
     ) -> AccountTransactionsPaginatedResponse:

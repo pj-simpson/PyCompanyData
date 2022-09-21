@@ -1,4 +1,4 @@
-from pycodat.clients.platform_client import PlatformClient
+from pycodat.clients.platform_client import BaseClient
 from pycodat.data_types.accounting.account_transactions import (
     AccountTransaction,
     AccountTransactionsPaginatedResponse,
@@ -10,7 +10,7 @@ from pycodat.handlers.accounting.account_transaction_handler import (
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 
-class AccountingClient(PlatformClient):
+class AccountingClient(BaseClient):
     def get_accounts(self, company_id: str, **kwargs) -> AccountsPaginatedResponse:
         """Gets the accounts for a company
 

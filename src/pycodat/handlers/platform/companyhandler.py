@@ -13,8 +13,6 @@ def set_env_and_keys_for_many_companies(
 
 class CompanyHandler(BaseHandler):
 
-    path = "companies/"
-
     def get_all_companies(self, **kwargs) -> CompanyPaginatedResponse:
         result = self.client.get(self.path, **kwargs)
         company = CompanyPaginatedResponse(**result)
