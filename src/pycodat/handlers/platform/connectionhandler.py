@@ -6,8 +6,6 @@ from pycodat.handlers.base import BaseHandler
 
 
 class ConnectionHandler(BaseHandler):
-    
-
     def get_company_connections(
         self, company_id: str, **kwargs
     ) -> DataConnectionPaginatedResponse:

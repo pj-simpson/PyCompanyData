@@ -13,11 +13,6 @@ from pycodat.rest_adapter import RestAdapter
 
 
 class TestAccountHandlers:
-    def test_accounts_handler_init(self, basic_auth_key):
-        handler = AccountsHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_accounts_handler_get_all_accounts(
         self, monkeypatch, accounts_raw_json, basic_auth_key, random_guid
     ):
@@ -41,11 +36,6 @@ class TestAccountHandlers:
 
 
 class TestAccountTransactionHandler:
-    def test_account_transaction_handler_init(self, basic_auth_key):
-        handler = AccountTransactionHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_account_transaction_handler_get_all_account_transactions(
         self, monkeypatch, account_transactions_raw_json, basic_auth_key, random_guid
     ):

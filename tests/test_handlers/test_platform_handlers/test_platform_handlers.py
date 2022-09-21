@@ -20,13 +20,8 @@ from pycodat.rest_adapter import RestAdapter
 
 
 class TestCompanyHandlers:
-    def test_company_handler_init(self, basic_auth_key):
-        handler = CompanyHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_company_handler_get_all_companies(
-        self, monkeypatch, companies_raw_json, basic_auth_key, random_guid
+        self, monkeypatch, companies_raw_json, basic_auth_key
     ):
         monkeypatch.setattr(RestAdapter, "get", companies_raw_json)
         handler = CompanyHandler(basic_auth_key, "prod")
@@ -47,11 +42,6 @@ class TestCompanyHandlers:
 
 
 class TestConnectionHandlers:
-    def test_connection_handler_init(self, basic_auth_key):
-        handler = ConnectionHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_connection_handler_get_company_connections(
         self, monkeypatch, connections_raw_json, basic_auth_key, random_guid
     ):
@@ -77,11 +67,6 @@ class TestConnectionHandlers:
 
 
 class TestDataSetHandlers:
-    def test_dataset_handler_init(self, basic_auth_key):
-        handler = DataSetHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_dataset_handler_get_data_set_history(
         self,
         monkeypatch,
@@ -115,11 +100,6 @@ class TestDataSetHandlers:
 
 
 class TestSyncSettingHandlers:
-    def test_sync_setting_handler_init(self, basic_auth_key):
-        handler = SyncSettingHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_sync_setting_handler_get_sync_settings(
         self,
         monkeypatch,
@@ -137,11 +117,6 @@ class TestSyncSettingHandlers:
 
 
 class TestDataStatusHandlers:
-    def test_data_status_handler_init(self, basic_auth_key):
-        handler = DataStatusHandler(basic_auth_key, "prod")
-        assert handler.path == "companies/"
-        assert type(handler.client) == RestAdapter
-
     def test_data_status_handler_get_sync_settings(
         self,
         monkeypatch,
