@@ -25,7 +25,7 @@ class TestHandlersInitialization:
             DataStatusHandler,
         ],
     )
-    def test_all_handler_init_prod(self, basic_auth_key, handlertype, envs):
+    def test_all_handler_init(self, basic_auth_key, handlertype, envs):
         handler = handlertype(basic_auth_key, envs)
         assert handler.path == "companies/"
         assert type(handler.client) == RestAdapter

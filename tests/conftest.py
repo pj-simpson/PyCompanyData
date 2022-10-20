@@ -30,11 +30,6 @@ def encoded_auth_key(scope="session"):
     return "Q1g2VTlsb3ZaU1NOUWhTUlVxSnBTSWJEczFPMklqck5wNzVmeUJFcQ=="
 
 
-@pytest.fixture(autouse=True)
-def dev_env_setup(monkeypatch):
-    monkeypatch.setenv("CODAT_DEV_ENV", "something.com")
-
-
 @pytest.fixture
 def basic_rest_adapter(encoded_auth_key, scope="class"):
     rest_adapter = RestAdapter("prod", encoded_auth_key)

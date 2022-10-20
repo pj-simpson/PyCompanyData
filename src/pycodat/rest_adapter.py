@@ -12,12 +12,13 @@ Environments = namedtuple("Environments", ["prod", "uat", "dev"])
 
 
 class RestAdapter:
-
-    environments = Environments(
-        "api.codat.io", "api-uat.codat.io", os.getenv("CODAT_DEV_ENV", "api.codat.io")
-    )
-
     def __init__(self, host: str, key: str) -> None:
+
+        self.environments = Environments(
+            "api.codat.io",
+            "api-uat.codat.io",
+            os.getenv("CODAT_DEV_ENV", "api.codat.io"),
+        )
         try:
             if host == "prod":
                 self.host = f"https://{self.environments.prod}/"
