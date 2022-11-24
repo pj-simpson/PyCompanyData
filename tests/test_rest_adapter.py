@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import requests
 
@@ -20,15 +18,15 @@ class TestRestAdapterInit:
 
     def test_rest_adapter_incorrect_env(self, encoded_auth_key):
         with pytest.raises(TypeError):
-            rest_adapter = RestAdapter("stage", encoded_auth_key)
+            RestAdapter("stage", encoded_auth_key)
 
     def test_rest_adapter_no_credentials(self):
         with pytest.raises(TypeError):
-            rest_adapter = RestAdapter(host="prod")
+            RestAdapter(host="prod")
 
     def test_rest_adapter_no_env(self, encoded_auth_key):
         with pytest.raises(TypeError):
-            rest_adapter = RestAdapter(key=encoded_auth_key)
+            RestAdapter(key=encoded_auth_key)
 
 
 class TestRestAdapterGet:
@@ -47,12 +45,12 @@ class TestRestAdapterGet:
         with pytest.raises(CodatException):
             monkeypatch.setattr(requests, "get", mock_404_get)
             rest_adapter = basic_rest_adapter
-            response = rest_adapter.get("some/other/path/")
+            rest_adapter.get("some/other/path/")
 
     def test_rest_adapter_get_no_path_supplied(self, basic_rest_adapter):
         with pytest.raises(TypeError):
             rest_adapter = basic_rest_adapter
-            response = rest_adapter.get()
+            rest_adapter.get()
 
     def test_rest_adapter_kwargs(
         self, monkeypatch, basic_rest_adapter, mock_successful_get

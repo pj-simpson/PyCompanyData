@@ -4,16 +4,12 @@ import uuid
 import pytest
 
 from pycodat.data_types.pagination import LinkHref, PaginationLinks
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.platform.company import (Company,
+                                                 CompanyPaginatedResponse)
 from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionError,
-    DataConnectionPaginatedResponse,
-)
+    DataConnection, DataConnectionError, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+    DataSetMetadata, DataSetMetaDataPaginatedResponse)
 from pycodat.data_types.platform.datastatus import DataStatus, DataTypeStatus
 from pycodat.data_types.platform.exceptions import CodatException
 from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings

@@ -1,12 +1,10 @@
 from pycodat.clients.platform_client import BaseClient
 from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-    AccountTransactionsPaginatedResponse,
-)
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.handlers.accounting.account_transaction_handler import (
-    AccountTransactionHandler,
-)
+    AccountTransaction, AccountTransactionsPaginatedResponse)
+from pycodat.data_types.accounting.accounts import (Account,
+                                                    AccountsPaginatedResponse)
+from pycodat.handlers.accounting.account_transaction_handler import \
+    AccountTransactionHandler
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 

@@ -1,7 +1,5 @@
 from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+    DataConnection, DataConnectionPaginatedResponse)
 from pycodat.handlers.base import BaseHandler
 
 

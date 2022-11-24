@@ -1,14 +1,13 @@
 import pytest
 
+from pycodat.handlers.accounting.account_transaction_handler import \
+    AccountTransactionHandler
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-from pycodat.handlers.accounting.account_transaction_handler import (
-    AccountTransactionHandler,
-)
 from pycodat.handlers.platform.companyhandler import CompanyHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
-from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 from pycodat.handlers.platform.datastatushandler import DataStatusHandler
+from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 from pycodat.rest_adapter import RestAdapter
 
 

@@ -1,14 +1,12 @@
-import pytest
+import pytest  # noqa: F401
 
 from pycodat.clients.accounting_client import AccountingClient
 from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-    AccountTransactionsPaginatedResponse,
-)
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.handlers.accounting.account_transaction_handler import (
-    AccountTransactionHandler,
-)
+    AccountTransaction, AccountTransactionsPaginatedResponse)
+from pycodat.data_types.accounting.accounts import (Account,
+                                                    AccountsPaginatedResponse)
+from pycodat.handlers.accounting.account_transaction_handler import \
+    AccountTransactionHandler
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 
 
@@ -27,7 +25,7 @@ class TestAccountingClientClass:
 
     def test_accounting_class_init_missing_key(self):
         with pytest.raises(TypeError):
-            codat = AccountingClient(env="prod")
+            AccountingClient(env="prod")
 
     def test_get_accounts(self, basic_auth_key, monkeypatch, accounts, random_guid):
         monkeypatch.setattr(AccountsHandler, "get_all_accounts", accounts)

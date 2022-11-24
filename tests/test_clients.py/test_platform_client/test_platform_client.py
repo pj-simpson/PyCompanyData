@@ -1,17 +1,12 @@
-import typing
-
-import pytest
+import pytest  # noqa: F401
 
 from pycodat.clients.platform_client import PlatformClient
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.platform.company import (Company,
+                                                 CompanyPaginatedResponse)
 from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+    DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+    DataSetMetadata, DataSetMetaDataPaginatedResponse)
 from pycodat.data_types.platform.datastatus import DataStatus
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.platform.companyhandler import CompanyHandler
@@ -36,7 +31,7 @@ class TestPlatformClientClass:
 
     def test_platform_class_init_missing_key(self):
         with pytest.raises(TypeError):
-            codat = PlatformClient(env="prod")
+            PlatformClient(env="prod")
 
     def test_get_companies(self, basic_auth_key, monkeypatch, companies):
         monkeypatch.setattr(CompanyHandler, "get_all_companies", companies)
@@ -53,7 +48,7 @@ class TestPlatformClientClass:
     def test_get_company_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_company()
+            codat.get_company()
 
     def test_get_connections(
         self, basic_auth_key, monkeypatch, connections, random_guid
@@ -67,7 +62,7 @@ class TestPlatformClientClass:
     def test_get_connections_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_connections()
+            codat.get_connections()
 
     def test_get_connection(self, basic_auth_key, monkeypatch, connection, random_guid):
         monkeypatch.setattr(
@@ -77,10 +72,10 @@ class TestPlatformClientClass:
         result = codat.get_connection(random_guid, random_guid)
         assert type(result) == DataConnection
 
-    def test_get_connections_no_id_supplied(self, basic_auth_key):
+    def test_get_connection_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_connection()
+            codat.get_connection()
 
     def test_get_data_set_history(
         self, basic_auth_key, monkeypatch, data_sets, random_guid
@@ -94,7 +89,7 @@ class TestPlatformClientClass:
     def test_get_data_set_history_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_data_sets()
+            codat.get_data_sets()
 
     def test_get_data_set(self, basic_auth_key, monkeypatch, data_set, random_guid):
         monkeypatch.setattr(DataSetHandler, "get_single_data_set", data_set)
@@ -105,7 +100,7 @@ class TestPlatformClientClass:
     def test_get_data_set_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_data_set()
+            codat.get_data_set()
 
     def test_get_sync_settings(
         self, basic_auth_key, monkeypatch, sync_settings, random_guid
@@ -118,7 +113,7 @@ class TestPlatformClientClass:
     def test_get_sync_settings_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_sync_settings()
+            codat.get_sync_settings()
 
     def test_get_data_status(
         self, basic_auth_key, monkeypatch, data_status, random_guid
@@ -131,4 +126,4 @@ class TestPlatformClientClass:
     def test_test_get_data_status_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):
             codat = PlatformClient(key=basic_auth_key, env="prod")
-            result = codat.get_data_status()
+            codat.get_data_status()

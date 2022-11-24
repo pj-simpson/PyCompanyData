@@ -3,14 +3,10 @@ import datetime
 import pytest
 
 from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-    AccountTransactionsPaginatedResponse,
-    BankAccountRef,
-    Line,
-    Metadata,
-    RecordRef,
-)
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+    AccountTransaction, AccountTransactionsPaginatedResponse, BankAccountRef,
+    Line, Metadata, RecordRef)
+from pycodat.data_types.accounting.accounts import (Account,
+                                                    AccountsPaginatedResponse)
 from pycodat.data_types.pagination import LinkHref, PaginationLinks
 
 

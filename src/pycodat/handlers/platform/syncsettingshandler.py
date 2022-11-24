@@ -1,5 +1,3 @@
-import typing
-
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.base import BaseHandler
 

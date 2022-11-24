@@ -1,13 +1,10 @@
 from pycodat.clients.base_client import BaseClient
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.platform.company import (Company,
+                                                 CompanyPaginatedResponse)
 from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+    DataConnection, DataConnectionPaginatedResponse)
 from pycodat.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+    DataSetMetadata, DataSetMetaDataPaginatedResponse)
 from pycodat.data_types.platform.datastatus import DataStatus
 from pycodat.data_types.platform.syncsettings import SyncSettings
 from pycodat.handlers.platform.companyhandler import CompanyHandler
