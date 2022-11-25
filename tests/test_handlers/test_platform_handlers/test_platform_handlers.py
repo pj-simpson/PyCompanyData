@@ -1,5 +1,3 @@
-import pytest
-
 from pycodat.data_types.platform.company import (Company,
                                                  CompanyPaginatedResponse)
 from pycodat.data_types.platform.connections import (

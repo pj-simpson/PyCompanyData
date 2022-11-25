@@ -1,4 +1,4 @@
-import pytest  # noqa: F401
+import pytest
 
 from pycodat.clients.platform_client import PlatformClient
 from pycodat.data_types.platform.company import (Company,

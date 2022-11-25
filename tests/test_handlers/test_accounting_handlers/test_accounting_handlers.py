@@ -1,5 +1,3 @@
-import pytest
-
 from pycodat.data_types.accounting.account_transactions import (
     AccountTransaction, AccountTransactionsPaginatedResponse)
 from pycodat.data_types.accounting.accounts import (Account,

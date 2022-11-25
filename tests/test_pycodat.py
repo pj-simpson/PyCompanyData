@@ -1,5 +1,3 @@
-import pytest
-
 from pycodat import __version__
 
 

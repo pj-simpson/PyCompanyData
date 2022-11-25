@@ -1,4 +1,4 @@
-import pytest  # noqa: F401
+import pytest
 
 from pycodat.clients.accounting_client import AccountingClient
 from pycodat.data_types.accounting.account_transactions import (
