@@ -4,16 +4,22 @@ import typing
 from pydantic import BaseModel
 
 from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction, AccountTransactionsPaginatedResponse)
-from pycodat.data_types.accounting.accounts import (Account,
-                                                    AccountsPaginatedResponse)
+    AccountTransaction,
+    AccountTransactionsPaginatedResponse,
+)
+from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.connections import (
-    DataConnection, DataConnectionPaginatedResponse)
+    DataConnection,
+    DataConnectionPaginatedResponse,
+)
 from pycodat.data_types.platform.datasetmetadata import (
-    DataSetMetadata, DataSetMetaDataPaginatedResponse)
-from pycodat.handlers.accounting.account_transaction_handler import \
-    AccountTransactionHandler
+    DataSetMetadata,
+    DataSetMetaDataPaginatedResponse,
+)
+from pycodat.handlers.accounting.account_transaction_handler import (
+    AccountTransactionHandler,
+)
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler

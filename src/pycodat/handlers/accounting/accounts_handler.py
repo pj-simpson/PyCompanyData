@@ -1,5 +1,4 @@
-from pycodat.data_types.accounting.accounts import (Account,
-                                                    AccountsPaginatedResponse)
+from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.handlers.base import BaseHandler
 
 

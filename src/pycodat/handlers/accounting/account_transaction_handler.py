@@ -1,5 +1,7 @@
 from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction, AccountTransactionsPaginatedResponse)
+    AccountTransaction,
+    AccountTransactionsPaginatedResponse,
+)
 from pycodat.handlers.base import BaseHandler
 
 

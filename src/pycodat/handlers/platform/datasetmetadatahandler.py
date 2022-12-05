@@ -1,5 +1,7 @@
 from pycodat.data_types.platform.datasetmetadata import (
-    DataSetMetadata, DataSetMetaDataPaginatedResponse)
+    DataSetMetadata,
+    DataSetMetaDataPaginatedResponse,
+)
 from pycodat.handlers.base import BaseHandler
 
 

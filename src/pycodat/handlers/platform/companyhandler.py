@@ -1,7 +1,6 @@
 import typing
 
-from pycodat.data_types.platform.company import (Company,
-                                                 CompanyPaginatedResponse)
+from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
 from pycodat.handlers.base import BaseHandler
 
 
