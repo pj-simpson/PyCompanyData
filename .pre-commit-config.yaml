@@ -34,5 +34,10 @@ repos:
           entry: poetry run isort
           language: system
           types: [python]
-      
-      
+      -   id: bandit
+          name: bandit
+          files: .
+          args: ["--ini", "setup.cfg", "-r", "src"]
+          entry: poetry run bandit
+          language: system
+          types: [python]
