@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "pycodat"
-version = "0.1.0"
+version = "0.22.12.1"
 description = "A Python client library for interacting with the Codat API"
 authors = ["Peter Simpson <p.simpson@codat.io>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 requests = "^2.28.1"
 pydantic = "^1.9.2"
 Sphinx = "^5.1.1"
