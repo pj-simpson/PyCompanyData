@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "0.22.12.1"
 
 from pycodat.clients.accounting_client import AccountingClient
 from pycodat.clients.platform_client import PlatformClient
