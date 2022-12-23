@@ -1,5 +1,8 @@
+import toml
+
 from pycodat import __version__
 
 
 def test_version():
-    assert __version__ == "0.1.0"
+    project_metadata = toml.load("./pyproject.toml")
+    assert __version__ == project_metadata["tool"]["poetry"]["version"]
