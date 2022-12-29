@@ -2,7 +2,11 @@
 
 PyCodat is a Python client library for the Codat API.
 
-#TODO Get Some Badges!
+
+<!-- Badges: -->
+
+[![CI](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml/badge.svg)](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml)
+
 
 PyCodat harnesses the power of [Requests](https://github.com/psf/requests) 
 and [Pydantic](https://github.com/pydantic/pydantic),
