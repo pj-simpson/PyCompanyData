@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath("../../src/pycodat/"))
 project = "pycodat"
 copyright = "2022, Peter Simpson"
 author = "Peter Simpson"
-release = "0.1.0"
+release = "0.22.12.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
