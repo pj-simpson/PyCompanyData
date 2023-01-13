@@ -25,6 +25,13 @@ bandit = "^1.7.4"
 [tool.poetry.group.dev.dependencies]
 toml = "^0.10.2"
 
+
+[[tool.poetry.source]]
+name = "pp"
+url = "https://peterprivatepypi.xyz/"
+default = false
+secondary = true
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
