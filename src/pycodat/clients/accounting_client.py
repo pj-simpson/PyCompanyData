@@ -4,10 +4,12 @@ from pycodat.data_types.accounting.account_transactions import (
     AccountTransactionsPaginatedResponse,
 )
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.data_types.accounting.suppliers import Supplier
 from pycodat.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
+from pycodat.handlers.accounting.suppliers_handler import SuppliersHandler
 
 
 class AccountingClient(BaseClient):
@@ -79,3 +81,17 @@ class AccountingClient(BaseClient):
             )
         )
         return account_transaction
+
+    def get_supplier(self, company_id: str, supplier_id: str) -> Supplier:
+        """Gets a single supplier from a company
+
+        :param company_id: Unique identifier for a company
+        :type company_id: str
+        :param supplier_id: Unique identifier for the supplier
+        :type supplier_id: str
+        :return: A single supplier object
+        :rtype: Supplier
+        """
+        suppliers_handler = SuppliersHandler(self.key, self.env)
+        supplier = suppliers_handler.get_single_supplier(company_id, supplier_id)
+        return supplier
