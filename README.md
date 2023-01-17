@@ -11,7 +11,7 @@ PyCodat is a Python client library for the Codat API.
 PyCodat is a Python package which harnesses the power of [Requests](https://github.com/psf/requests) 
 and [Pydantic](https://github.com/pydantic/pydantic),
 (two of the most esteemed Python packages around), to make it easy to
-interact with your resources in the Codat Platform, from your Python code.
+interact with resources in the Codat Platform, from your code.
 
 ## Installation
 
