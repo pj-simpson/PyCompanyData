@@ -1,7 +1,8 @@
 import pytest
 
 from pycodat.clients.platform_client import PlatformClient
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.data_types.platform.company import Company
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionPaginatedResponse,
@@ -40,7 +41,7 @@ class TestPlatformClientClass:
         monkeypatch.setattr(CompanyHandler, "get_all_companies", companies)
         codat = PlatformClient(key=basic_auth_key, env="prod")
         result = codat.get_companies()
-        assert type(result) == CompanyPaginatedResponse
+        assert type(result) == PaginatedResponse[Company]
 
     def test_get_company(self, basic_auth_key, monkeypatch, company, random_guid):
         monkeypatch.setattr(CompanyHandler, "get_single_company", company)
