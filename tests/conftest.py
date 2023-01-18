@@ -15,6 +15,10 @@ def basic_auth_key(scope="session"):
 def encoded_auth_key(scope="session"):
     return "Q1g2VTlsb3ZaU1NOUWhTUlVxSnBTSWJEczFPMklqck5wNzVmeUJFcQ=="
 
+@pytest.fixture
+def auth_header(scope="session"):
+    return "Basic Q1g2VTlsb3ZaU1NOUWhTUlVxSnBTSWJEczFPMklqck5wNzVmeUJFcQ=="
+
 
 @pytest.fixture
 def basic_rest_adapter(encoded_auth_key, scope="class"):
