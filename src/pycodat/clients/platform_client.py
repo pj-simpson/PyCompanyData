@@ -1,11 +1,9 @@
 import typing
+
 from pycodat.clients.base_client import BaseClient
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+from pycodat.data_types.platform.connections import DataConnection
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
@@ -20,7 +18,9 @@ from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class PlatformClient(BaseClient):
-    def get_companies(self, query: str = None, order_by: str = None) -> typing.List[Company]:
+    def get_companies(
+        self, query: str = None, order_by: str = None
+    ) -> typing.List[Company]:
         """Gets all companies
 
         :return: A list of companies
@@ -29,15 +29,22 @@ class PlatformClient(BaseClient):
         company_handler = CompanyHandler(self.key, self.env)
         return company_handler.get_all_companies(query, order_by)
 
-    def get_companies_page(self, page_number: int = 1, page_size: int = 100,
-                           query: str = None, order_by: str = None) -> PaginatedResponse[Company]:
+    def get_companies_page(
+        self,
+        page_number: int = 1,
+        page_size: int = 100,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Company]:
         """Get a page of companies
 
         :return: A page of companies
         :rtype: PaginatedResponse[Company]
         """
         company_handler = CompanyHandler(self.key, self.env)
-        return company_handler.get_pageof_companies(page_number, page_size, query, order_by)
+        return company_handler.get_pageof_companies(
+            page_number, page_size, query, order_by
+        )
 
     def get_company(self, company_id: str) -> Company:
         """Gets a single company
@@ -65,9 +72,7 @@ class PlatformClient(BaseClient):
         sync_settings = sync_settings_handler.get_sync_settings(company_id)
         return sync_settings
 
-    def get_connections(
-        self, company_id: str, **kwargs
-    ) -> DataConnectionPaginatedResponse:
+    def get_connections(self, company_id: str, **kwargs) -> typing.List[DataConnection]:
         """Gets the connections for a company
 
         :param company_id: Unique identifier for a company
@@ -78,6 +83,23 @@ class PlatformClient(BaseClient):
 
         connection_handler = ConnectionHandler(self.key, self.env)
         connection = connection_handler.get_company_connections(company_id, **kwargs)
+        return connection
+
+    def get_connections_page(
+        self, company_id: str, **kwargs
+    ) -> PaginatedResponse[DataConnection]:
+        """Gets the connections for a company
+
+        :param company_id: Unique identifier for a company
+        :type company_id: str
+        :return: List of all of a companies connections
+        :rtype: DataConnectionPaginatedResponse
+        """
+
+        connection_handler = ConnectionHandler(self.key, self.env)
+        connection = connection_handler.get_pageof_company_connections(
+            company_id, **kwargs
+        )
         return connection
 
     def get_connection(self, company_id: str, connection_id: str) -> DataConnection:

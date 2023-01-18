@@ -8,10 +8,7 @@ from pycodat.data_types.accounting.account_transactions import (
     AccountTransactionsPaginatedResponse,
 )
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+from pycodat.data_types.platform.connections import DataConnection
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
@@ -45,12 +42,14 @@ class Company(BaseModel):
         self.key: str = key
         self.env: str = env
 
-    def get_connections(self) -> DataConnectionPaginatedResponse:
+    # TODO -> Reimplement
 
-        connection_handler = ConnectionHandler(key=self.key, env=self.env)
+    # def get_connections(self) -> DataConnectionPaginatedResponse:
 
-        connection = connection_handler.get_company_connections(self.id)
-        return connection
+    #     connection_handler = ConnectionHandler(key=self.key, env=self.env)
+
+    #     connection = connection_handler.get_company_connections(self.id)
+    #     return connection
 
     def get_connection(self, connection_id: str) -> DataConnection:
         connection_handler = ConnectionHandler(key=self.key, env=self.env)
@@ -117,4 +116,3 @@ class Company(BaseModel):
             )
         )
         return account_transaction
-

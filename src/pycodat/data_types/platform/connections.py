@@ -3,8 +3,6 @@ import typing
 
 from pydantic import BaseModel
 
-from pycodat.data_types.pagination import PaginatedResponse
-
 
 class DataConnectionError(BaseModel):
     statusCode: typing.Optional[str] = None
@@ -24,7 +22,3 @@ class DataConnection(BaseModel):
     sourceType: typing.Optional[str] = None
     lastSync: typing.Optional[datetime.datetime] = None
     DataConnectionErrors: typing.Optional[typing.List[DataConnectionError]] = None
-
-
-class DataConnectionPaginatedResponse(PaginatedResponse):
-    results: typing.List[DataConnection] = []

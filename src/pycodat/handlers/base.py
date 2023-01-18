@@ -1,7 +1,7 @@
 import typing
 
-from pycodat.rest_adapter import RestAdapter
 from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.rest_adapter import RestAdapter
 
 T = typing.TypeVar("T")
 
@@ -22,11 +22,11 @@ class BaseHandler:
         page_number = 1
         results = []
         while True:
-            response = self._get_paginated_response(model, path, page=page_number, pageSize=100, **kwargs)
+            response = self._get_paginated_response(
+                model, path, page=page_number, pageSize=100, **kwargs
+            )
             results += response.results
             page_number += 1
             if not response.links.next:
                 break
         return results
-
-

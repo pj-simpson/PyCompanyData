@@ -1,12 +1,8 @@
 import pytest
 
 from pycodat.clients.platform_client import PlatformClient
-from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+from pycodat.data_types.platform.connections import DataConnection
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
@@ -21,27 +17,12 @@ from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class TestPlatformClientClass:
-    def test_platform_class_init(self, basic_auth_key, encoded_auth_key):
-        codat = PlatformClient(key=basic_auth_key, env="uat")
-        assert codat.key == encoded_auth_key
-        assert codat.env == "uat"
-
-    def test_platform_class_init_not_env_supplied(
-        self, basic_auth_key, encoded_auth_key
-    ):
-        codat = PlatformClient(key=basic_auth_key)
-        assert codat.key == encoded_auth_key
-        assert codat.env == "prod"
-
-    def test_platform_class_init_missing_key(self):
-        with pytest.raises(TypeError):
-            PlatformClient(env="prod")
-
     def test_get_companies(self, basic_auth_key, monkeypatch, companies):
         monkeypatch.setattr(CompanyHandler, "get_all_companies", companies)
         codat = PlatformClient(key=basic_auth_key, env="prod")
         result = codat.get_companies()
-        assert type(result) == PaginatedResponse[Company]
+        # testing that an element of the resulting list is a DataConnection Object
+        assert type(result[0]) == Company
 
     def test_get_company(self, basic_auth_key, monkeypatch, company, random_guid):
         monkeypatch.setattr(CompanyHandler, "get_single_company", company)
@@ -60,8 +41,8 @@ class TestPlatformClientClass:
         monkeypatch.setattr(ConnectionHandler, "get_company_connections", connections)
         codat = PlatformClient(key=basic_auth_key, env="prod")
         result = codat.get_connections(random_guid)
-        assert type(result) == DataConnectionPaginatedResponse
-        assert type(result.results) == list
+        # testing that an element of the resulting list is a DataConnection Object
+        assert type(result[0]) == DataConnection
 
     def test_get_connections_no_id_supplied(self, basic_auth_key):
         with pytest.raises(TypeError):

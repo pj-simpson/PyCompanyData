@@ -85,7 +85,7 @@ def account_transactions_raw_json():
                     "totalAmount": 0,
                     "modifiedDate": "2022-08-24T19:01:30.019Z",
                     "sourceModifiedDate": "2022-08-24T19:01:30.019Z",
-                    "metadata": {"isDeleted": True}
+                    "metadata": {"isDeleted": True},
                 }
             ],
             "pageNumber": 0,
@@ -95,8 +95,9 @@ def account_transactions_raw_json():
                 "self": {"href": "string"},
                 "current": {"href": "string"},
                 "previous": {"href": "string"},
-            }
+            },
         }
+
     return _account_transactions_raw_json
 
 

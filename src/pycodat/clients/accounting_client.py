@@ -3,7 +3,6 @@ import typing
 from pycodat.clients.platform_client import BaseClient
 from pycodat.data_types.accounting.account_transactions import (
     AccountTransaction,
-    AccountTransactionsPaginatedResponse,
 )
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.data_types.accounting.suppliers import Supplier
@@ -76,8 +75,10 @@ class AccountingClient(BaseClient):
         """
 
         account_transaction_handler = AccountTransactionHandler(self.key, self.env)
-        account_transactions = account_transaction_handler.get_pageof_account_transactions(
-            company_id, connection_id
+        account_transactions = (
+            account_transaction_handler.get_pageof_account_transactions(
+                company_id, connection_id
+            )
         )
         return account_transactions
 

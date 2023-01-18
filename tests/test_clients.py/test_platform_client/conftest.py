@@ -2,13 +2,9 @@ import datetime
 
 import pytest
 
-from pycodat.data_types.pagination import LinkHref, PaginationLinks, PaginatedResponse
+# from pycodat.data_types.pagination import LinkHref, PaginatedResponse, PaginationLinks
 from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionError,
-    DataConnectionPaginatedResponse,
-)
+from pycodat.data_types.platform.connections import DataConnection, DataConnectionError
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
@@ -20,93 +16,174 @@ from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings
 @pytest.fixture
 def companies():
     def _companies(*args, **kwargs):
-        return PaginatedResponse[Company](
-            pageNumber=1,
-            pageSize=100,
-            totalResults=661,
-            links=PaginationLinks(
-                self=LinkHref(href="/companies/"),
-                current=LinkHref(href="/companies/"),
-                next=LinkHref(href="/companies/?page=2&pageSize=100"),
-                previous=None,
+        return [
+            Company(
+                id="bd40f311-761a-41b0-b295-c295c8213e16",
+                name="__ Bug 6512 __",
+                platform="QuickBooks Online",
+                redirect="https://link.codat.io/company/bd40f311-761a-41b0-b295-c295c8213e16",
+                created=datetime.datetime(
+                    2019, 10, 22, 9, 25, 39, tzinfo=datetime.timezone.utc
+                ),
+                lastSync="2020-09-02T07:41:29.41Z",
+                dataConnections=[
+                    DataConnection(
+                        id="a66445bb-2c98-441b-a26d-87b3389fcf08",
+                        integrationId="adeb7fe9-4c64-4848-9e0d-175317876b6f",
+                        sourceId="d3a7993f-8165-46ef-8c61-f3c06c3ef88a",
+                        platformName="QuickBooks Online",
+                        linkUrl="https://link-api.codat.io/companies/bd40f311-761a-41b0-b295-c295c8213e16/connections/a66445bb-2c98-441b-a26d-87b3389fcf08/start",
+                        status="Deauthorized",
+                        created=datetime.datetime(
+                            2019, 10, 22, 9, 26, tzinfo=datetime.timezone.utc
+                        ),
+                        sourceType="Accounting",
+                        lastSync=datetime.datetime(
+                            2020,
+                            9,
+                            2,
+                            7,
+                            41,
+                            29,
+                            410041,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                        DataConnectionErrors=None,
+                    )
+                ],
+                createdByUserName=None,
+                key="",
+                env="",
             ),
-            results=[
-                Company(
-                    id="bd40f311-761a-41b0-b295-c295c8213e16",
-                    name="__ Bug 6512 __",
-                    platform="QuickBooks Online",
-                    redirect="https://link.codat.io/company/bd40f311-761a-41b0-b295-c295c8213e16",
-                    created=datetime.datetime(
-                        2019, 10, 22, 9, 25, 39, tzinfo=datetime.timezone.utc
-                    ),
-                    lastSync="2020-09-02T07:41:29.41Z",
-                    dataConnections=[
-                        DataConnection(
-                            id="a66445bb-2c98-441b-a26d-87b3389fcf08",
-                            integrationId="adeb7fe9-4c64-4848-9e0d-175317876b6f",
-                            sourceId="d3a7993f-8165-46ef-8c61-f3c06c3ef88a",
-                            platformName="QuickBooks Online",
-                            linkUrl="https://link-api.codat.io/companies/bd40f311-761a-41b0-b295-c295c8213e16/connections/a66445bb-2c98-441b-a26d-87b3389fcf08/start",
-                            status="Deauthorized",
-                            created=datetime.datetime(
-                                2019, 10, 22, 9, 26, tzinfo=datetime.timezone.utc
-                            ),
-                            sourceType="Accounting",
-                            lastSync=datetime.datetime(
-                                2020,
-                                9,
-                                2,
-                                7,
-                                41,
-                                29,
-                                410041,
-                                tzinfo=datetime.timezone.utc,
-                            ),
-                            DataConnectionErrors=None,
-                        )
-                    ],
-                    createdByUserName=None,
-                    key="",
-                    env="",
-                ),
-                Company(
-                    id="bb304911-b193-4a27-bab9-69ab70b1d2f1",
-                    name="__ Bug 7027 __",
-                    platform="Xero",
-                    redirect="https://link.codat.io/company/bb304911-b193-4a27-bab9-69ab70b1d2f1",
-                    created=None,
-                    lastSync="2020-02-11T09:39:38.0833333Z",
-                    dataConnections=[
-                        DataConnection(
-                            id="5e4c5583-1924-450a-9310-65ca22c115eb",
-                            integrationId="0f20c943-12d0-4800-9f6c-d218f62d494c",
-                            sourceId="8a156a5a-39cb-4f9d-856e-76ef9b9a9607",
-                            platformName="Xero",
-                            linkUrl="https://link-api.codat.io/companies/bb304911-b193-4a27-bab9-69ab70b1d2f1/connections/5e4c5583-1924-450a-9310-65ca22c115eb/start",
-                            status="Deauthorized",
-                            created=None,
-                            sourceType="Accounting",
-                            lastSync=datetime.datetime(
-                                2020,
-                                2,
-                                11,
-                                9,
-                                39,
-                                37,
-                                839172,
-                                tzinfo=datetime.timezone.utc,
-                            ),
-                            DataConnectionErrors=None,
-                        )
-                    ],
-                    createdByUserName=None,
-                    key="",
-                    env="",
-                ),
-            ],
-        )
+            Company(
+                id="bb304911-b193-4a27-bab9-69ab70b1d2f1",
+                name="__ Bug 7027 __",
+                platform="Xero",
+                redirect="https://link.codat.io/company/bb304911-b193-4a27-bab9-69ab70b1d2f1",
+                created=None,
+                lastSync="2020-02-11T09:39:38.0833333Z",
+                dataConnections=[
+                    DataConnection(
+                        id="5e4c5583-1924-450a-9310-65ca22c115eb",
+                        integrationId="0f20c943-12d0-4800-9f6c-d218f62d494c",
+                        sourceId="8a156a5a-39cb-4f9d-856e-76ef9b9a9607",
+                        platformName="Xero",
+                        linkUrl="https://link-api.codat.io/companies/bb304911-b193-4a27-bab9-69ab70b1d2f1/connections/5e4c5583-1924-450a-9310-65ca22c115eb/start",
+                        status="Deauthorized",
+                        created=None,
+                        sourceType="Accounting",
+                        lastSync=datetime.datetime(
+                            2020,
+                            2,
+                            11,
+                            9,
+                            39,
+                            37,
+                            839172,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                        DataConnectionErrors=None,
+                    )
+                ],
+                createdByUserName=None,
+                key="",
+                env="",
+            ),
+        ]
 
     return _companies
+
+
+# @pytest.fixture
+# def companies():
+# def _companies(*args, **kwargs):
+#     return typing.List[Company](
+#         pageNumber=1,
+#         pageSize=100,
+#         totalResults=661,
+#         links=PaginationLinks(
+#             self=LinkHref(href="/companies/"),
+#             current=LinkHref(href="/companies/"),
+#             next=LinkHref(href="/companies/?page=2&pageSize=100"),
+#             previous=None,
+#         ),
+#         results=[
+#             Company(
+#                 id="bd40f311-761a-41b0-b295-c295c8213e16",
+#                 name="__ Bug 6512 __",
+#                 platform="QuickBooks Online",
+#                 redirect="https://link.codat.io/company/bd40f311-761a-41b0-b295-c295c8213e16",
+#                 created=datetime.datetime(
+#                     2019, 10, 22, 9, 25, 39, tzinfo=datetime.timezone.utc
+#                 ),
+#                 lastSync="2020-09-02T07:41:29.41Z",
+#                 dataConnections=[
+#                     DataConnection(
+#                         id="a66445bb-2c98-441b-a26d-87b3389fcf08",
+#                         integrationId="adeb7fe9-4c64-4848-9e0d-175317876b6f",
+#                         sourceId="d3a7993f-8165-46ef-8c61-f3c06c3ef88a",
+#                         platformName="QuickBooks Online",
+#                         linkUrl="https://link-api.codat.io/companies/bd40f311-761a-41b0-b295-c295c8213e16/connections/a66445bb-2c98-441b-a26d-87b3389fcf08/start",
+#                         status="Deauthorized",
+#                         created=datetime.datetime(
+#                             2019, 10, 22, 9, 26, tzinfo=datetime.timezone.utc
+#                         ),
+#                         sourceType="Accounting",
+#                         lastSync=datetime.datetime(
+#                             2020,
+#                             9,
+#                             2,
+#                             7,
+#                             41,
+#                             29,
+#                             410041,
+#                             tzinfo=datetime.timezone.utc,
+#                         ),
+#                         DataConnectionErrors=None,
+#                     )
+#                 ],
+#                 createdByUserName=None,
+#                 key="",
+#                 env="",
+#             ),
+#             Company(
+#                 id="bb304911-b193-4a27-bab9-69ab70b1d2f1",
+#                 name="__ Bug 7027 __",
+#                 platform="Xero",
+#                 redirect="https://link.codat.io/company/bb304911-b193-4a27-bab9-69ab70b1d2f1",
+#                 created=None,
+#                 lastSync="2020-02-11T09:39:38.0833333Z",
+#                 dataConnections=[
+#                     DataConnection(
+#                         id="5e4c5583-1924-450a-9310-65ca22c115eb",
+#                         integrationId="0f20c943-12d0-4800-9f6c-d218f62d494c",
+#                         sourceId="8a156a5a-39cb-4f9d-856e-76ef9b9a9607",
+#                         platformName="Xero",
+#                         linkUrl="https://link-api.codat.io/companies/bb304911-b193-4a27-bab9-69ab70b1d2f1/connections/5e4c5583-1924-450a-9310-65ca22c115eb/start",
+#                         status="Deauthorized",
+#                         created=None,
+#                         sourceType="Accounting",
+#                         lastSync=datetime.datetime(
+#                             2020,
+#                             2,
+#                             11,
+#                             9,
+#                             39,
+#                             37,
+#                             839172,
+#                             tzinfo=datetime.timezone.utc,
+#                         ),
+#                         DataConnectionErrors=None,
+#                     )
+#                 ],
+#                 createdByUserName=None,
+#                 key="",
+#                 env="",
+#             ),
+#         ],
+#     )
+
+# return _companies
 
 
 @pytest.fixture
@@ -146,32 +223,101 @@ def company():
     return _company
 
 
+# @pytest.fixture
+# def connections():
+#     def _connections(*args, **kwargs):
+#         return PaginatedResponse[DataConnection](
+#             results=[
+#                 DataConnection(
+#                     id="a66445bb-2c98-441b-a26d-87b3389fcf08",
+#                     integrationId="adeb7fe9-4c64-4848-9e0d-175317876b6f",
+#                     sourceId="d3a7993f-8165-46ef-8c61-f3c06c3ef88a",
+#                     platformName="QuickBooks Online",
+#                     linkUrl="https://link-api.codat.io/companies/bd40f311-761a-41b0-b295-c295c8213e16/connections/a66445bb-2c98-441b-a26d-87b3389fcf08/start",
+#                     status="Deauthorized",
+#                     created=datetime.datetime(
+#                         2019, 10, 22, 9, 26, tzinfo=datetime.timezone.utc
+#                     ),
+#                     sourceType="Accounting",
+#                     lastSync=datetime.datetime(
+#                         2020, 9, 2, 7, 41, 29, 410041, tzinfo=datetime.timezone.utc
+#                     ),
+#                     DataConnectionErrors=None,
+#                 )
+#             ],
+#             pageNumber=1,
+#             pageSize=100,
+#             totalResults=1,
+#         )
+
+#     return _connections
+
+
 @pytest.fixture
 def connections():
     def _connections(*args, **kwargs):
-        return DataConnectionPaginatedResponse(
-            results=[
-                DataConnection(
-                    id="a66445bb-2c98-441b-a26d-87b3389fcf08",
-                    integrationId="adeb7fe9-4c64-4848-9e0d-175317876b6f",
-                    sourceId="d3a7993f-8165-46ef-8c61-f3c06c3ef88a",
-                    platformName="QuickBooks Online",
-                    linkUrl="https://link-api.codat.io/companies/bd40f311-761a-41b0-b295-c295c8213e16/connections/a66445bb-2c98-441b-a26d-87b3389fcf08/start",
-                    status="Deauthorized",
-                    created=datetime.datetime(
-                        2019, 10, 22, 9, 26, tzinfo=datetime.timezone.utc
-                    ),
-                    sourceType="Accounting",
-                    lastSync=datetime.datetime(
-                        2020, 9, 2, 7, 41, 29, 410041, tzinfo=datetime.timezone.utc
-                    ),
-                    DataConnectionErrors=None,
-                )
-            ],
-            pageNumber=1,
-            pageSize=100,
-            totalResults=1,
-        )
+        return [
+            DataConnection(
+                id="aa7c1023-17de-4176-af7d-b2a4180b3b79",
+                integrationId="0f20c943-12d0-4800-9f6c-d218f62d494c",
+                sourceId="8a156a5a-39cb-4f9d-856e-76ef9b9a9607",
+                platformName="Xero",
+                linkUrl="https://link-api.codat.io/companies/0abc0f4b-6c0b-4f11-b73a-67878a7b0619/connections/aa7c1023-17de-4176-af7d-b2a4180b3b79/start",
+                status="PendingAuth",
+                created=datetime.datetime(
+                    2023, 1, 13, 10, 23, 31, tzinfo=datetime.timezone.utc
+                ),
+                sourceType="Accounting",
+                lastSync=None,
+                DataConnectionErrors=None,
+            ),
+            DataConnection(
+                id="e3c58cf1-f196-4dd4-bf57-f4bad309f4f0",
+                integrationId="580146ed-7556-4f92-8bf9-7344667763ec",
+                sourceId="46ee0089-dc88-405a-9667-9fb3d9976f19",
+                platformName="Plaid",
+                linkUrl="https://link-api.codat.io/companies/0abc0f4b-6c0b-4f11-b73a-67878a7b0619/connections/e3c58cf1-f196-4dd4-bf57-f4bad309f4f0/start",
+                status="PendingAuth",
+                created=datetime.datetime(
+                    2023, 1, 16, 16, 43, 29, tzinfo=datetime.timezone.utc
+                ),
+                sourceType="Banking",
+                lastSync=None,
+                DataConnectionErrors=None,
+            ),
+            DataConnection(
+                id="cd510ce0-b024-433f-af6d-ece120bc5d33",
+                integrationId="9e0cc03b-3868-4543-98c0-568f0f1b12a3",
+                sourceId="aff0f057-255f-42c4-8d4a-ae23b43e1615",
+                platformName="Sandbox",
+                linkUrl="https://link-api.codat.io/companies/0abc0f4b-6c0b-4f11-b73a-67878a7b0619/connections/cd510ce0-b024-433f-af6d-ece120bc5d33/start",
+                status="Linked",
+                created=datetime.datetime(
+                    2023, 1, 16, 17, 26, 25, tzinfo=datetime.timezone.utc
+                ),
+                sourceType="Accounting",
+                lastSync=datetime.datetime(
+                    2023, 1, 17, 18, 47, 20, 157890, tzinfo=datetime.timezone.utc
+                ),
+                DataConnectionErrors=None,
+            ),
+            DataConnection(
+                id="133c9847-a211-414f-bb69-739bea37a53e",
+                integrationId="b27611c5-c104-4360-b979-e8f6b16db164",
+                sourceId="fac84d06-5a70-4e9e-bf46-7607e647b036",
+                platformName="Commerce Sandbox",
+                linkUrl="https://link-api.codat.io/companies/0abc0f4b-6c0b-4f11-b73a-67878a7b0619/connections/133c9847-a211-414f-bb69-739bea37a53e/start",
+                status="Linked",
+                created=datetime.datetime(
+                    2023, 1, 16, 17, 26, 36, tzinfo=datetime.timezone.utc
+                ),
+                sourceType="Commerce",
+                lastSync=datetime.datetime(
+                    2023, 1, 16, 17, 26, 44, 416330, tzinfo=datetime.timezone.utc
+                ),
+                DataConnectionErrors=None,
+            ),
+        ]
 
     return _connections
 

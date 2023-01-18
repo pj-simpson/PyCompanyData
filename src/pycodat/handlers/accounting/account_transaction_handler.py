@@ -7,12 +7,15 @@ from pycodat.handlers.base import BaseHandler
 
 
 class AccountTransactionHandler(BaseHandler):
-    def get_all_account_transactions(self, company_id: str, connection_id: str) -> typing.List[AccountTransaction]:
+    def get_all_account_transactions(
+        self, company_id: str, connection_id: str
+    ) -> typing.List[AccountTransaction]:
         path = f"{self.path}{company_id}/connections/{connection_id}/data/accounttransactions"
         return self._get_all_pages(AccountTransaction, path)
 
     def get_pageof_account_transactions(
-            self, company_id: str, connection_id: str) -> PaginatedResponse[AccountTransaction]:
+        self, company_id: str, connection_id: str
+    ) -> PaginatedResponse[AccountTransaction]:
         path = f"{self.path}{company_id}/connections/{connection_id}/data/accounttransactions"
         return self._get_paginated_response(AccountTransaction, path)
 

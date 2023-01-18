@@ -1,9 +1,6 @@
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import (
-    DataConnection,
-    DataConnectionPaginatedResponse,
-)
+from pycodat.data_types.platform.connections import DataConnection
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
@@ -24,8 +21,9 @@ class TestCompanyHandlers:
     ):
         monkeypatch.setattr(RestAdapter, "get", companies_raw_json)
         handler = CompanyHandler(basic_auth_key, "prod")
-        result = handler.get_pageof_companies(page_number=1, page_size=100, query="",
-                                              order_by="")
+        result = handler.get_pageof_companies(
+            page_number=1, page_size=100, query="", order_by=""
+        )
         # TODO: Test parameters in method above more thoroughly
 
         assert type(result) == PaginatedResponse[Company]
@@ -63,7 +61,7 @@ class TestConnectionHandlers:
 
         result = handler.get_company_connections(company_id)
 
-        assert type(result) == DataConnectionPaginatedResponse
+        assert type(result[0]) == DataConnection
 
     def test_connection_handler_get_single_company_connection(
         self, monkeypatch, connection_raw_json, basic_auth_key, random_guid
