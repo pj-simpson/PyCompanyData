@@ -1,6 +1,7 @@
 import typing
 
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.platform.company import Company
+from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.base import BaseHandler
 
 
@@ -12,13 +13,19 @@ def set_env_and_keys_for_many_companies(
 
 
 class CompanyHandler(BaseHandler):
-    def get_all_companies(self, **kwargs) -> CompanyPaginatedResponse:
-        result = self.client.get(self.path, **kwargs)
-        company = CompanyPaginatedResponse(**result)
+    def get_all_companies(self, **kwargs) -> typing.List[Company]:
+        companies = self._get_all_pages(Company, self.path, **kwargs)
         # hack to pass the key and env so the companies so they can
         # instatiate handlers make rest calls
-        set_env_and_keys_for_many_companies(company.results, self.key, self.env)
-        return company
+        set_env_and_keys_for_many_companies(companies, self.key, self.env)
+        return companies
+
+    def get_pageof_companies(self, **kwargs) -> PaginatedResponse[Company]:
+        companies = self._get_paginated_response(Company, self.path, **kwargs)
+            # hack to pass the key and env so the companies so they can
+            # instatiate handlers make rest calls
+        set_env_and_keys_for_many_companies(companies.results, self.key, self.env)
+        return companies
 
     def get_single_company(self, company_id: str) -> Company:
         result = self.client.get(self.path + company_id)

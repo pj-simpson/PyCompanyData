@@ -1,4 +1,5 @@
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.data_types.platform.company import Company
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionPaginatedResponse,
@@ -18,6 +19,15 @@ from pycodat.rest_adapter import RestAdapter
 
 
 class TestCompanyHandlers:
+    def test_company_handler_get_pageof_companies(
+        self, monkeypatch, companies_raw_json, basic_auth_key
+    ):
+        monkeypatch.setattr(RestAdapter, "get", companies_raw_json)
+        handler = CompanyHandler(basic_auth_key, "prod")
+        result = handler.get_pageof_companies()
+
+        assert type(result) == PaginatedResponse[Company]
+
     def test_company_handler_get_all_companies(
         self, monkeypatch, companies_raw_json, basic_auth_key
     ):
@@ -25,7 +35,8 @@ class TestCompanyHandlers:
         handler = CompanyHandler(basic_auth_key, "prod")
         result = handler.get_all_companies()
 
-        assert type(result) == CompanyPaginatedResponse
+        assert type(result) == list
+        assert type(result[0]) == Company
 
     def test_company_handler_get_single_company(
         self, monkeypatch, company_raw_json, basic_auth_key, random_guid

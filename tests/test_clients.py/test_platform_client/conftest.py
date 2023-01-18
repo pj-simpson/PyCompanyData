@@ -2,8 +2,8 @@ import datetime
 
 import pytest
 
-from pycodat.data_types.pagination import LinkHref, PaginationLinks
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.pagination import LinkHref, PaginationLinks, PaginatedResponse
+from pycodat.data_types.platform.company import Company
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionError,
@@ -20,7 +20,7 @@ from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings
 @pytest.fixture
 def companies():
     def _companies(*args, **kwargs):
-        return CompanyPaginatedResponse(
+        return PaginatedResponse[Company](
             pageNumber=1,
             pageSize=100,
             totalResults=661,

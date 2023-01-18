@@ -1,5 +1,7 @@
+import typing
 from pycodat.clients.base_client import BaseClient
-from pycodat.data_types.platform.company import Company, CompanyPaginatedResponse
+from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.data_types.platform.company import Company
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionPaginatedResponse,
@@ -18,15 +20,23 @@ from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class PlatformClient(BaseClient):
-    def get_companies(self, **kwargs) -> CompanyPaginatedResponse:
+    def get_companies(self, **kwargs) -> typing.List[Company]:
         """Gets all companies
 
         :return: A list of companies
-        :rtype: CompanyPaginatedResponse
+        :rtype: typing.List[Company]
         """
         company_handler = CompanyHandler(self.key, self.env)
-        company = company_handler.get_all_companies(**kwargs)
-        return company
+        return company_handler.get_all_companies(**kwargs)
+
+    def get_companies_page(self, **kwargs) -> PaginatedResponse[Company]:
+        """Get a page of companies
+
+        :return: A page of companies
+        :rtype: PaginatedResponse[Company]
+        """
+        company_handler = CompanyHandler(self.key, self.env)
+        return company_handler.get_pageof_companies(**kwargs)
 
     def get_company(self, company_id: str) -> Company:
         """Gets a single company

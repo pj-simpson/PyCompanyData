@@ -8,7 +8,6 @@ from pycodat.data_types.accounting.account_transactions import (
     AccountTransactionsPaginatedResponse,
 )
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.connections import (
     DataConnection,
     DataConnectionPaginatedResponse,
@@ -119,6 +118,3 @@ class Company(BaseModel):
         )
         return account_transaction
 
-
-class CompanyPaginatedResponse(PaginatedResponse):
-    results: typing.List[Company] = []
