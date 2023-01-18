@@ -43,6 +43,20 @@ for company in companies.results:
 
 ## Contributing
 
+### Install Poetry
+You'll need to install [Poetry (a Python package manager)](https://python-poetry.org/docs/#installing-with-the-official-installer)
+```PowerShell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$env:APPDATA\Python\Scripts\", [System.EnvironmentVariableTarget]::User)
+$env:path += ";$env:AppData\Python\Scripts;"
+```
+
+### Initialize Poetry
+```PowerShell
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+poetry shell
+poetry install
+```
 tbc...
 
 ## License
