@@ -1,3 +1,5 @@
+import typing
+
 from pycodat.clients.platform_client import BaseClient
 from pycodat.data_types.accounting.account_transactions import (
     AccountTransaction,
@@ -5,6 +7,7 @@ from pycodat.data_types.accounting.account_transactions import (
 )
 from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
 from pycodat.data_types.accounting.suppliers import Supplier
+from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
@@ -42,7 +45,7 @@ class AccountingClient(BaseClient):
 
     def get_account_transactions(
         self, company_id: str, connection_id: str
-    ) -> AccountTransactionsPaginatedResponse:
+    ) -> typing.List[AccountTransaction]:
         """Gets all account transactions from a company
 
         :param company_id: Unique identifier for a company
@@ -55,6 +58,25 @@ class AccountingClient(BaseClient):
 
         account_transaction_handler = AccountTransactionHandler(self.key, self.env)
         account_transactions = account_transaction_handler.get_all_account_transactions(
+            company_id, connection_id
+        )
+        return account_transactions
+
+    def get_account_transactions_page(
+        self, company_id: str, connection_id: str
+    ) -> PaginatedResponse[AccountTransaction]:
+        """Gets a page of account transactions from a company
+
+        :param company_id: Unique identifier for a company
+        :type company_id: str
+        :param connection_id: Unique identifier for a company's connection
+        :type connection_id: str
+        :return: A list of account transactions
+        :rtype: AccountTransactionsPaginatedResponse
+        """
+
+        account_transaction_handler = AccountTransactionHandler(self.key, self.env)
+        account_transactions = account_transaction_handler.get_pageof_account_transactions(
             company_id, connection_id
         )
         return account_transactions

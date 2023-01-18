@@ -44,7 +44,8 @@ class TestAccountTransactionHandler:
 
         result = handler.get_all_account_transactions(company_id, connection_id)
 
-        assert type(result) == AccountTransactionsPaginatedResponse
+        assert type(result) == list
+        assert type(result[0]) == AccountTransaction
 
     def test_account_transaction_handler_get_single_account_transaction(
         self, monkeypatch, account_transaction_raw_json, basic_auth_key, random_guid
