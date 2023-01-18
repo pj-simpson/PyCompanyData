@@ -24,7 +24,9 @@ class TestCompanyHandlers:
     ):
         monkeypatch.setattr(RestAdapter, "get", companies_raw_json)
         handler = CompanyHandler(basic_auth_key, "prod")
-        result = handler.get_pageof_companies()
+        result = handler.get_pageof_companies(page_number=1, page_size=100, query="",
+                                              order_by="")
+        # TODO: Test parameters in method above more thoroughly
 
         assert type(result) == PaginatedResponse[Company]
 
@@ -33,7 +35,8 @@ class TestCompanyHandlers:
     ):
         monkeypatch.setattr(RestAdapter, "get", companies_raw_json)
         handler = CompanyHandler(basic_auth_key, "prod")
-        result = handler.get_all_companies()
+        result = handler.get_all_companies(query="", order_by="")
+        # TODO: Test parameters in method above more thoroughly
 
         assert type(result) == list
         assert type(result[0]) == Company

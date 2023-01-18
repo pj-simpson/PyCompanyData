@@ -14,6 +14,7 @@ class BaseHandler:
         self.path = "companies/"
 
     def _get_paginated_response(self, model, path, **kwargs) -> PaginatedResponse[T]:
+        kwargs = {key: value for key, value in kwargs.items() if value is not None}
         response = self.client.get(path, **kwargs)
         return PaginatedResponse[model](**response)
 
