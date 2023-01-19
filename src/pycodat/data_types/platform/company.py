@@ -24,6 +24,8 @@ from ...handlers.platform.datastatushandler import DataStatusHandler
 from ...handlers.platform.syncsettingshandler import SyncSettingHandler
 from .datastatus import DataStatus
 from .syncsettings import SyncSettings
+from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
+from pycodat.data_types.accounting.invoices import Invoice
 
 
 class Company(BaseModel):
@@ -116,3 +118,8 @@ class Company(BaseModel):
             )
         )
         return account_transaction
+    
+    def get_invoices(self, query: str = None, order_by: str = None) -> typing.List[Invoice]:
+        invoice_handler = InvoicesHandler(self.key, self.env)
+        return invoice_handler.get_all_invoices(self.id, query, order_by)
+    

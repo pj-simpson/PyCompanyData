@@ -35,7 +35,7 @@ class PaymentAllocationPayment(BaseModel):
     id: Optional[str]
     note: Optional[str]
     reference: Optional[str]
-    accountRef: AccountRef
+    accountRef: Optional[AccountRef]
     currency: Optional[str]
     currencyRate: Optional[float]
     paidOnDate: datetime
