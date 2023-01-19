@@ -1,11 +1,8 @@
-from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-)
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.handlers.accounting.account_transaction_handler import (
-    AccountTransactionHandler,
-)
+from pycodat.data_types.accounting.account_transactions import AccountTransaction
+from pycodat.data_types.accounting.accounts import Account
+from pycodat.handlers.accounting.account_transaction_handler import AccountTransactionHandler
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
+
 from pycodat.rest_adapter import RestAdapter
 
 
@@ -16,9 +13,10 @@ class TestAccountHandlers:
         monkeypatch.setattr(RestAdapter, "get", accounts_raw_json)
         handler = AccountsHandler(basic_auth_key, "prod")
         company_id = random_guid()
-        result = handler.get_all_accounts(company_id)
+        result = handler.get_all_accounts(company_id, query="", order_by="")
 
-        assert type(result) == AccountsPaginatedResponse
+        assert type(result) == list
+        assert type(result[0]) == Account
 
     def test_account_handler_get_single_account(
         self, monkeypatch, account_raw_json, basic_auth_key, random_guid
@@ -41,7 +39,7 @@ class TestAccountTransactionHandler:
         company_id = random_guid()
         connection_id = random_guid()
 
-        result = handler.get_all_account_transactions(company_id, connection_id)
+        result = handler.get_all_account_transactions(company_id, connection_id, query="", order_by="")
 
         assert type(result) == list
         assert type(result[0]) == AccountTransaction

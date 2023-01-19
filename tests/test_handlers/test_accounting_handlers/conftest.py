@@ -30,7 +30,6 @@ def accounts_raw_json():
             "_links": {
                 "self": {"href": "string"},
                 "current": {"href": "string"},
-                "next": {"href": "string"},
                 "previous": {"href": "string"},
             },
         }
