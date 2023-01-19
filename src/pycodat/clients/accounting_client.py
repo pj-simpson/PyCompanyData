@@ -5,8 +5,10 @@ from pycodat.data_types.accounting.account_transactions import (
     AccountTransaction,
     AccountTransactionsPaginatedResponse,
 )
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.data_types.accounting.accounts import Account
 from pycodat.data_types.accounting.suppliers import Supplier
+from pycodat.data_types.accounting.bills import Bill
+from pycodat.data_types.accounting.invoices import Invoice
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
