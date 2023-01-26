@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 from pycodat.clients.base_client import BaseClient
 from pycodat.data_types.pagination import PaginatedResponse
@@ -18,13 +18,11 @@ from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class PlatformClient(BaseClient):
-    def get_companies(
-        self, query: str = None, order_by: str = None
-    ) -> typing.List[Company]:
+    def get_companies(self, query: str = None, order_by: str = None) -> List[Company]:
         """Gets all companies
 
         :return: A list of companies
-        :rtype: typing.List[Company]
+        :rtype: List[Company]
         """
         company_handler = CompanyHandler(self.key, self.env)
         return company_handler.get_all_companies(query, order_by)
@@ -72,7 +70,7 @@ class PlatformClient(BaseClient):
         sync_settings = sync_settings_handler.get_sync_settings(company_id)
         return sync_settings
 
-    def get_connections(self, company_id: str, **kwargs) -> typing.List[DataConnection]:
+    def get_connections(self, company_id: str, **kwargs) -> List[DataConnection]:
         """Gets the connections for a company
 
         :param company_id: Unique identifier for a company

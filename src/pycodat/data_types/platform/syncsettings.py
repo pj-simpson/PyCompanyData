@@ -1,21 +1,21 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
 
 class SyncSetting(BaseModel):
-    dataType: typing.Optional[str] = None
+    dataType: Optional[str] = None
     fetchOnFirstLink: bool
     syncSchedule: int
     syncOrder: int
-    syncFromUtc: typing.Optional[datetime.datetime] = None
-    syncFromWindow: typing.Optional[int] = None
-    monthsToSync: typing.Optional[int] = None
+    syncFromUtc: Optional[datetime.datetime] = None
+    syncFromWindow: Optional[int] = None
+    monthsToSync: Optional[int] = None
 
 
 class SyncSettings(BaseModel):
 
     companyId: str
-    settings: typing.Optional[typing.List[SyncSetting]] = None
+    settings: Optional[List[SyncSetting]] = None
     overridesDefaults: bool

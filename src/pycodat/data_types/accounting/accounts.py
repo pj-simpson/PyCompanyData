@@ -1,5 +1,5 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -7,26 +7,26 @@ from pycodat.data_types.pagination import PaginatedResponse
 
 
 class ValidDatatypeLink(BaseModel):
-    property: typing.Optional[str]
-    links: typing.Optional[typing.List[str]]
+    property: Optional[str]
+    links: Optional[List[str]]
 
 
 class Account(BaseModel):
-    id: typing.Optional[str]
-    nominalCode: typing.Optional[str]
-    name: typing.Optional[str]
-    description: typing.Optional[str]
-    fullyQualifiedCategory: typing.Optional[str]
-    fullyQualifiedName: typing.Optional[str]
-    currency: typing.Optional[str]
-    currentBalance: typing.Optional[int]
+    id: Optional[str]
+    nominalCode: Optional[str]
+    name: Optional[str]
+    description: Optional[str]
+    fullyQualifiedCategory: Optional[str]
+    fullyQualifiedName: Optional[str]
+    currency: Optional[str]
+    currentBalance: Optional[int]
     type: str
     status: str
     isBankAccount: bool
-    modifiedDate: typing.Optional[datetime.datetime]
-    sourceModifiedDate: typing.Optional[datetime.datetime]
-    validDatatypeLinks: typing.Optional[typing.List[ValidDatatypeLink]]
+    modifiedDate: Optional[datetime.datetime]
+    sourceModifiedDate: Optional[datetime.datetime]
+    validDatatypeLinks: Optional[List[ValidDatatypeLink]]
 
 
 class AccountsPaginatedResponse(PaginatedResponse):
-    results: typing.List[Account] = []
+    results: List[Account] = []

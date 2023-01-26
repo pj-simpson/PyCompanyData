@@ -1,5 +1,5 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -7,18 +7,18 @@ from pycodat.data_types.pagination import PaginatedResponse
 
 
 class BankAccountRef(BaseModel):
-    id: typing.Optional[str]
-    name: typing.Optional[str]
+    id: Optional[str]
+    name: Optional[str]
 
 
 class RecordRef(BaseModel):
     id: str
-    dataType: typing.Optional[str]
+    dataType: Optional[str]
 
 
 class Line(BaseModel):
-    description: typing.Optional[str]
-    recordRef: typing.Optional[RecordRef]
+    description: Optional[str]
+    recordRef: Optional[RecordRef]
     amount: int
 
 
@@ -27,20 +27,20 @@ class Metadata(BaseModel):
 
 
 class AccountTransaction(BaseModel):
-    id: typing.Optional[str]
-    transactionId: typing.Optional[str]
-    note: typing.Optional[str]
+    id: Optional[str]
+    transactionId: Optional[str]
+    note: Optional[str]
     bankAccountRef: BankAccountRef
     date: datetime.datetime
     status: str
-    currency: typing.Optional[str]
-    currencyRate: typing.Optional[int]
-    lines: typing.Optional[typing.List[Line]]
+    currency: Optional[str]
+    currencyRate: Optional[int]
+    lines: Optional[List[Line]]
     totalAmount: int
-    modifiedDate: typing.Optional[datetime.datetime]
-    sourceModifiedDate: typing.Optional[datetime.datetime]
-    metadata: typing.Optional[Metadata]
+    modifiedDate: Optional[datetime.datetime]
+    sourceModifiedDate: Optional[datetime.datetime]
+    metadata: Optional[Metadata]
 
 
 class AccountTransactionsPaginatedResponse(PaginatedResponse):
-    results: typing.List[AccountTransaction] = []
+    results: List[AccountTransaction] = []

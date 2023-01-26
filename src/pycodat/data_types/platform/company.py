@@ -1,13 +1,11 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
-from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-    AccountTransactionsPaginatedResponse,
-)
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
+from pycodat.data_types.accounting.account_transactions import AccountTransaction
+from pycodat.data_types.accounting.accounts import Account
+from pycodat.data_types.accounting.invoices import Invoice
 from pycodat.data_types.platform.connections import DataConnection
 from pycodat.data_types.platform.datasetmetadata import (
     DataSetMetadata,
@@ -17,6 +15,7 @@ from pycodat.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
+from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
 from pycodat.handlers.platform.connectionhandler import ConnectionHandler
 from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
 
@@ -24,8 +23,6 @@ from ...handlers.platform.datastatushandler import DataStatusHandler
 from ...handlers.platform.syncsettingshandler import SyncSettingHandler
 from .datastatus import DataStatus
 from .syncsettings import SyncSettings
-from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
-from pycodat.data_types.accounting.invoices import Invoice
 
 
 class Company(BaseModel):
@@ -33,10 +30,10 @@ class Company(BaseModel):
     name: str
     platform: str
     redirect: str
-    created: typing.Optional[datetime.datetime] = None
-    lastSync: typing.Optional[str] = None
-    dataConnections: typing.Optional[typing.List[DataConnection]] = None
-    createdByUserName: typing.Optional[str] = None
+    created: Optional[datetime.datetime] = None
+    lastSync: Optional[str] = None
+    dataConnections: Optional[List[DataConnection]] = None
+    createdByUserName: Optional[str] = None
     key: str = ""
     env: str = ""
 
@@ -85,7 +82,7 @@ class Company(BaseModel):
         data_status = data_status_handler.get_company_data_status(self.id)
         return data_status
 
-    def get_accounts(self, **kwargs) -> AccountsPaginatedResponse:
+    def get_accounts(self, **kwargs) -> List[Account]:
 
         connection_handler = AccountsHandler(self.key, self.env)
         connection = connection_handler.get_all_accounts(self.id, **kwargs)
@@ -97,9 +94,7 @@ class Company(BaseModel):
         account = accounts_handler.get_single_account(self.id, account_id)
         return account
 
-    def get_account_transactions(
-        self, connection_id: str
-    ) -> AccountTransactionsPaginatedResponse:
+    def get_account_transactions(self, connection_id: str) -> List[AccountTransaction]:
 
         account_transaction_handler = AccountTransactionHandler(self.key, self.env)
         account_transactions = account_transaction_handler.get_all_account_transactions(
@@ -118,8 +113,7 @@ class Company(BaseModel):
             )
         )
         return account_transaction
-    
-    def get_invoices(self, query: str = None, order_by: str = None) -> typing.List[Invoice]:
+
+    def get_invoices(self, query: str = None, order_by: str = None) -> List[Invoice]:
         invoice_handler = InvoicesHandler(self.key, self.env)
         return invoice_handler.get_all_invoices(self.id, query, order_by)
-    

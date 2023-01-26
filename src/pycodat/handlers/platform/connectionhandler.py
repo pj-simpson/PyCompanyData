@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.data_types.platform.connections import DataConnection
@@ -8,8 +8,8 @@ from pycodat.handlers.base import BaseHandler
 class ConnectionHandler(BaseHandler):
     def get_company_connections(
         self, company_id: str, **kwargs
-    ) -> typing.List[DataConnection]:
-        connections = self._get_all_pages(
+    ) -> List[DataConnection]:
+        connections: List[DataConnection] = self._get_all_pages(
             DataConnection, self.path + company_id + "/connections", **kwargs
         )
         return connections
@@ -17,7 +17,7 @@ class ConnectionHandler(BaseHandler):
     def get_pageof_company_connections(
         self, company_id: str, **kwargs
     ) -> PaginatedResponse[DataConnection]:
-        companies = self._get_paginated_response(
+        companies: PaginatedResponse[DataConnection] = self._get_paginated_response(
             DataConnection, self.path + company_id + "/connections", **kwargs
         )
         return companies

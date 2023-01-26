@@ -1,26 +1,25 @@
-import typing
+from typing import List
 
 from pycodat.clients.platform_client import BaseClient
-from pycodat.data_types.accounting.account_transactions import (
-    AccountTransaction,
-    AccountTransactionsPaginatedResponse,
-)
+from pycodat.data_types.accounting.account_transactions import AccountTransaction
 from pycodat.data_types.accounting.accounts import Account
-from pycodat.data_types.accounting.suppliers import Supplier
 from pycodat.data_types.accounting.bills import Bill
 from pycodat.data_types.accounting.invoices import Invoice
+from pycodat.data_types.accounting.suppliers import Supplier
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
+from pycodat.handlers.accounting.bills_handler import BillsHandler
 from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
 from pycodat.handlers.accounting.suppliers_handler import SuppliersHandler
-from pycodat.handlers.accounting.bills_handler import BillsHandler
 
 
 class AccountingClient(BaseClient):
-    def get_accounts(self, company_id: str, query: str = None, order_by: str = None) -> typing.List[Account]:
+    def get_accounts(
+        self, company_id: str, query: str = None, order_by: str = None
+    ) -> List[Account]:
         """Gets all accounts from a company
 
         :param company_id: Unique identifier for a company
@@ -30,14 +29,20 @@ class AccountingClient(BaseClient):
         :param order_by: Field to order results by
         :type: order_by: str
         :return: A list of accounts
-        :rtype: typing.List[Account]
+        :rtype: List[Account]
         """
 
         accounts_handler = AccountsHandler(self.key, self.env)
         return accounts_handler.get_all_accounts(company_id, query, order_by)
 
-    def get_accounts_page(self, company_id: str, page_number: int = 1, page_size: int = 1, query: str = None,
-                          order_by: str = None) -> PaginatedResponse[Account]:
+    def get_accounts_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 1,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Account]:
         """Gets a page of accounts from a company
 
         :param company_id: Unique identifier for a company
@@ -55,7 +60,9 @@ class AccountingClient(BaseClient):
         """
 
         accounts_handler = AccountsHandler(self.key, self.env)
-        accounts = accounts_handler.get_pageof_accounts(company_id, page_number, page_size, query, order_by)
+        accounts = accounts_handler.get_pageof_accounts(
+            company_id, page_number, page_size, query, order_by
+        )
         return accounts
 
     def get_account(self, company_id: str, account_id: str) -> Account:
@@ -73,8 +80,12 @@ class AccountingClient(BaseClient):
         return acccounts_handler.get_single_account(company_id, account_id)
 
     def get_account_transactions(
-            self, company_id: str, connection_id: str, query: str = None, order_by: str = None
-    ) -> typing.List[AccountTransaction]:
+        self,
+        company_id: str,
+        connection_id: str,
+        query: str = None,
+        order_by: str = None,
+    ) -> List[AccountTransaction]:
         """Gets all account transactions from a company
 
         :param company_id: Unique identifier for a company
@@ -95,9 +106,15 @@ class AccountingClient(BaseClient):
         )
         return account_transactions
 
-    def get_account_transactions_page(self, company_id: str, connection_id: str, page_number: int = 1,
-                                      page_size: int = 1, query: str = None, order_by: str = None
-                                      ) -> PaginatedResponse[AccountTransaction]:
+    def get_account_transactions_page(
+        self,
+        company_id: str,
+        connection_id: str,
+        page_number: int = 1,
+        page_size: int = 1,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[AccountTransaction]:
         """Gets a page of account transactions from a company
 
         :param company_id: Unique identifier for a company
@@ -117,13 +134,15 @@ class AccountingClient(BaseClient):
         """
 
         account_transaction_handler = AccountTransactionHandler(self.key, self.env)
-        account_transactions = account_transaction_handler.get_pageof_account_transactions(
-            company_id, connection_id, page_number, page_size, query, order_by
+        account_transactions = (
+            account_transaction_handler.get_pageof_account_transactions(
+                company_id, connection_id, page_number, page_size, query, order_by
+            )
         )
         return account_transactions
 
     def get_account_transaction(
-            self, company_id: str, connection_id: str, account_transaction_id: str
+        self, company_id: str, connection_id: str, account_transaction_id: str
     ) -> AccountTransaction:
         """Gets a single account transaction from a company
 
@@ -145,7 +164,9 @@ class AccountingClient(BaseClient):
         )
         return account_transaction
 
-    def get_bills(self, company_id: str, query: str = None, order_by: str = None) -> typing.List[Bill]:
+    def get_bills(
+        self, company_id: str, query: str = None, order_by: str = None
+    ) -> List[Bill]:
         """Gets all bills from a company
 
         :param company_id: Unique identifier for a company
@@ -155,14 +176,20 @@ class AccountingClient(BaseClient):
         :param order_by: Field to order results by
         :type: order_by: str
         :return: A list of bills
-        :rtype: typing.List[Bill]
+        :rtype: List[Bill]
         """
 
         bills_handler = BillsHandler(self.key, self.env)
         return bills_handler.get_all_bills(company_id, query, order_by)
 
-    def get_bills_page(self, company_id: str, page_number: int = 1, page_size: int = 1, query: str = None,
-                       order_by: str = None) -> PaginatedResponse[Bill]:
+    def get_bills_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 1,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Bill]:
         """Gets a page of bills from a company
 
         :param company_id: Unique identifier for a company
@@ -180,7 +207,9 @@ class AccountingClient(BaseClient):
         """
 
         bills_handler = BillsHandler(self.key, self.env)
-        bills = bills_handler.get_pageof_bills(company_id, page_number, page_size, query, order_by)
+        bills = bills_handler.get_pageof_bills(
+            company_id, page_number, page_size, query, order_by
+        )
         return bills
 
     def get_bill(self, company_id: str, bill_id: str) -> Bill:
@@ -197,7 +226,9 @@ class AccountingClient(BaseClient):
         bills_handler = BillsHandler(self.key, self.env)
         return bills_handler.get_single_bill(company_id, bill_id)
 
-    def get_suppliers(self, company_id: str, query: str = None, order_by: str = None) -> typing.List[Supplier]:
+    def get_suppliers(
+        self, company_id: str, query: str = None, order_by: str = None
+    ) -> List[Supplier]:
         """Gets all suppliers from a company
 
         :param company_id: Unique identifier for a company
@@ -207,14 +238,20 @@ class AccountingClient(BaseClient):
         :param order_by: Field to order results by
         :type: order_by: str
         :return: A list of suppliers
-        :rtype: typing.List[Supplier]
+        :rtype: List[Supplier]
         """
 
         suppliers_handler = SuppliersHandler(self.key, self.env)
         return suppliers_handler.get_all_suppliers(company_id, query, order_by)
 
-    def get_suppliers_page(self, company_id: str, page_number: int = 1, page_size: int = 1, query: str = None,
-                           order_by: str = None) -> PaginatedResponse[Supplier]:
+    def get_suppliers_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 1,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Supplier]:
         """Gets a page of suppliers from a company
 
         :param company_id: Unique identifier for a company
@@ -232,7 +269,9 @@ class AccountingClient(BaseClient):
         """
 
         suppliers_handler = SuppliersHandler(self.key, self.env)
-        suppliers = suppliers_handler.get_pageof_suppliers(company_id, page_number, page_size, query, order_by)
+        suppliers = suppliers_handler.get_pageof_suppliers(
+            company_id, page_number, page_size, query, order_by
+        )
         return suppliers
 
     def get_supplier(self, company_id: str, supplier_id: str) -> Supplier:
@@ -248,7 +287,9 @@ class AccountingClient(BaseClient):
         suppliers_handler = SuppliersHandler(self.key, self.env)
         return suppliers_handler.get_single_supplier(company_id, supplier_id)
 
-    def get_invoices(self, company_id: str, query: str = None, order_by: str = None) -> typing.List[Invoice]:
+    def get_invoices(
+        self, company_id: str, query: str = None, order_by: str = None
+    ) -> List[Invoice]:
         """Gets all invoices for a company
 
         :param company_id: Unique identifier for a company
@@ -257,17 +298,24 @@ class AccountingClient(BaseClient):
         :param query: Query to pass to Codat API to filter results
         :type query: str
 
-        :param order_by: Name of the field to order the results by.  Defaults to ascending; prefix with `-` to sort in descending order.
+        :param order_by: Name of the field to order the results by.
+            Defaults to ascending; prefix with `-` to sort in descending order.
         :type orderby: str
 
         :return: A list of invoices
-        :rtype: typing.List[Invoice]
+        :rtype: List[Invoice]
         """
         invoice_handler = InvoicesHandler(self.key, self.env)
         return invoice_handler.get_all_invoices(company_id, query, order_by)
 
-    def get_invoices_page(self, company_id: str, page_number: int = 1, page_size: int = 100, query: str = None,
-                          order_by: str = None) -> PaginatedResponse[Invoice]:
+    def get_invoices_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 100,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Invoice]:
         """Gets a page of invoices for a company
 
         :param company_id: Unique identifier for a company
@@ -276,7 +324,8 @@ class AccountingClient(BaseClient):
         :param query: Query to pass to Codat API to filter results
         :type query: str
 
-        :param order_by: Name of the field to order the results by.  Defaults to ascending; prefix with `-` to sort in descending order.
+        :param order_by: Name of the field to order the results by.
+            Defaults to ascending; prefix with `-` to sort in descending order.
         :type orderby: str
 
         :param page_number: Page number to retrieve.  Default: 1
@@ -289,7 +338,9 @@ class AccountingClient(BaseClient):
         :rtype: PaginatedResponse[Invoice]
         """
         invoice_handler = InvoicesHandler(self.key, self.env)
-        return invoice_handler.get_pageof_invoices(company_id, page_number, page_size, query, order_by)
+        return invoice_handler.get_pageof_invoices(
+            company_id, page_number, page_size, query, order_by
+        )
 
     def get_invoice(self, company_id: str, invoice_id: str) -> Invoice:
         """Gets an invoice (by ID) for a company

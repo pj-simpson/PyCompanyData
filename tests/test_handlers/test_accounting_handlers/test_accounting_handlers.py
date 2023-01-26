@@ -1,8 +1,9 @@
 from pycodat.data_types.accounting.account_transactions import AccountTransaction
 from pycodat.data_types.accounting.accounts import Account
-from pycodat.handlers.accounting.account_transaction_handler import AccountTransactionHandler
+from pycodat.handlers.accounting.account_transaction_handler import (
+    AccountTransactionHandler,
+)
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-
 from pycodat.rest_adapter import RestAdapter
 
 
@@ -39,7 +40,9 @@ class TestAccountTransactionHandler:
         company_id = random_guid()
         connection_id = random_guid()
 
-        result = handler.get_all_account_transactions(company_id, connection_id, query="", order_by="")
+        result = handler.get_all_account_transactions(
+            company_id, connection_id, query="", order_by=""
+        )
 
         assert type(result) == list
         assert type(result[0]) == AccountTransaction

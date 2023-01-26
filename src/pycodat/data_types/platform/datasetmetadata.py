@@ -1,4 +1,4 @@
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -9,16 +9,16 @@ class DataSetMetadata(BaseModel):
     id: str
     companyId: str
     connectionId: str
-    dataType: typing.Optional[str] = None
+    dataType: Optional[str] = None
     status: str
-    errorMessage: typing.Optional[str] = None
+    errorMessage: Optional[str] = None
     requested: str
-    completed: typing.Optional[str] = None
+    completed: Optional[str] = None
     progress: int
     isCompleted: bool
     isErrored: bool
-    validationinformationUrl: typing.Optional[str] = None
+    validationinformationUrl: Optional[str] = None
 
 
 class DataSetMetaDataPaginatedResponse(PaginatedResponse):
-    results: typing.List[DataSetMetadata] = []
+    results: List[DataSetMetadata] = []

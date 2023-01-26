@@ -1,14 +1,14 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
 
 class DataConnectionError(BaseModel):
-    statusCode: typing.Optional[str] = None
-    erroredOnUtc: typing.Optional[datetime.datetime] = None
-    statusText: typing.Optional[str] = None
-    errorMessage: typing.Optional[str] = None
+    statusCode: Optional[str] = None
+    erroredOnUtc: Optional[datetime.datetime] = None
+    statusText: Optional[str] = None
+    errorMessage: Optional[str] = None
 
 
 class DataConnection(BaseModel):
@@ -17,8 +17,8 @@ class DataConnection(BaseModel):
     sourceId: str
     platformName: str
     linkUrl: str
-    status: typing.Optional[str] = None
-    created: typing.Optional[datetime.datetime] = None
-    sourceType: typing.Optional[str] = None
-    lastSync: typing.Optional[datetime.datetime] = None
-    DataConnectionErrors: typing.Optional[typing.List[DataConnectionError]] = None
+    status: Optional[str] = None
+    created: Optional[datetime.datetime] = None
+    sourceType: Optional[str] = None
+    lastSync: Optional[datetime.datetime] = None
+    DataConnectionErrors: Optional[List[DataConnectionError]] = None

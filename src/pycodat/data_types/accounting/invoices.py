@@ -1,9 +1,18 @@
 from datetime import datetime
-from typing import List
-
-from pycodat.data_types.accounting.typed_refs import *
+from typing import List, Optional
 
 from pydantic import BaseModel
+
+from pycodat.data_types.accounting.typed_refs import (
+    AccountRef,
+    CategoryRef,
+    CustomerRef,
+    ItemRef,
+    ProjectRef,
+    SalesOrderRef,
+    TaxRateRef,
+    TrackingCategoryRef,
+)
 
 
 class Tracking(BaseModel):
@@ -61,6 +70,7 @@ class WithholdingTaxItem(BaseModel):
 
 class Metadata(BaseModel):
     isDeleted: bool
+
 
 class Invoice(BaseModel):
     id: str

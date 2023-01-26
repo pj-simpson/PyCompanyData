@@ -1,29 +1,29 @@
 import datetime
-import typing
+from typing import List, Optional
 
 from pydantic import BaseModel
 
 
 class Address(BaseModel):
-    type: typing.Optional[str]
-    line1: typing.Optional[str]
-    line2: typing.Optional[str]
-    city: typing.Optional[str]
-    region: typing.Optional[str]
-    country: typing.Optional[str]
-    postalCode: typing.Optional[str]
+    type: Optional[str]
+    line1: Optional[str]
+    line2: Optional[str]
+    city: Optional[str]
+    region: Optional[str]
+    country: Optional[str]
+    postalCode: Optional[str]
 
 
 class Supplier(BaseModel):
-    id: typing.Optional[str]
-    supplierName: typing.Optional[str]
-    contactName: typing.Optional[str]
-    emailAddress: typing.Optional[str]
-    phone: typing.Optional[str]
-    addresses: typing.Optional[typing.List[Address]]
-    registrationNumber: typing.Optional[str]
-    taxNumber: typing.Optional[str]
-    status: typing.Optional[str]
-    modifiedDate: typing.Optional[datetime.datetime]
-    sourceModifiedDate: typing.Optional[datetime.datetime]
-    defaultCurrency: typing.Optional[str]
+    id: Optional[str]
+    supplierName: Optional[str]
+    contactName: Optional[str]
+    emailAddress: Optional[str]
+    phone: Optional[str]
+    addresses: Optional[List[Address]]
+    registrationNumber: Optional[str]
+    taxNumber: Optional[str]
+    status: Optional[str]
+    modifiedDate: Optional[datetime.datetime]
+    sourceModifiedDate: Optional[datetime.datetime]
+    defaultCurrency: Optional[str]

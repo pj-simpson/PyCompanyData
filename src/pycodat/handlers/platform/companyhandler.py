@@ -1,20 +1,22 @@
-import typing
+from typing import List
 
-from pycodat.data_types.platform.company import Company
 from pycodat.data_types.pagination import PaginatedResponse
+from pycodat.data_types.platform.company import Company
 from pycodat.handlers.base import BaseHandler
 
 
 def set_env_and_keys_for_many_companies(
-    companies: typing.List[Company], key: str, env: str
+    companies: List[Company], key: str, env: str
 ) -> None:
     for comp in companies:
         comp._set_env_and_key(key=key, env=env)
 
 
 class CompanyHandler(BaseHandler):
-    def get_all_companies(self, query: str, order_by: str) -> typing.List[Company]:
-        companies = self._get_all_pages(
+    def get_all_companies(
+        self, query: str = None, order_by: str = None
+    ) -> List[Company]:
+        companies: List[Company] = self._get_all_pages(
             Company, self.path, query=query, orderBy=order_by
         )
         # hack to pass the key and env so the companies so they can
@@ -23,9 +25,9 @@ class CompanyHandler(BaseHandler):
         return companies
 
     def get_pageof_companies(
-        self, page_number: int, page_size: int, query: str, order_by: str
+        self, page_number: int, page_size: int, query: str = None, order_by: str = None
     ) -> PaginatedResponse[Company]:
-        companies = self._get_paginated_response(
+        companies: PaginatedResponse[Company] = self._get_paginated_response(
             Company,
             self.path,
             page=page_number,

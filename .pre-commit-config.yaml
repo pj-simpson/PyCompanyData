@@ -6,38 +6,38 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: mixed-line-ending
-  # - repo: local
-  #   hooks:
-  #     -   id: black
-  #         name: black
-  #         entry: poetry run black
-  #         files: .
-  #         args: ["--check"]
-  #         language: system
-  #         types: [python]
-  #     -   id: flake8
-  #         name: flake8
-  #         entry: poetry run flake8
-  #         files: .
-  #         language: system
-  #         types: [python]
-  #     # -   id: mypy
-  #     #     name: mypy
-  #     #     entry: poetry run mypy
-  #     #     files: .
-  #     #     language: system
-  #     #     types: [python]
-  #     # -   id: isort
-  #     #     name: isort
-  #     #     files: .
-  #     #     args: ["--profile", "black", "--filter-files"]
-  #     #     entry: poetry run isort
-  #     #     language: system
-  #     #     types: [python]
-  #     -   id: bandit
-  #         name: bandit
-  #         files: .
-  #         args: ["--ini", "setup.cfg", "-r", "src"]
-  #         entry: poetry run bandit
-  #         language: system
-  #         types: [python]
+  - repo: local
+    hooks:
+      -   id: black
+          name: black
+          entry: poetry run black
+          files: .
+          args: ["--check"]
+          language: system
+          types: [python]
+      -   id: flake8
+          name: flake8
+          entry: poetry run flake8
+          files: .
+          language: system
+          types: [python]
+      # -   id: mypy
+      #     name: mypy
+      #     entry: poetry run mypy
+      #     files: .
+      #     language: system
+      #     types: [python]
+      # -   id: isort
+      #     name: isort
+      #     files: .
+      #     args: ["--profile", "black", "--filter-files"]
+      #     entry: poetry run isort
+      #     language: system
+      #     types: [python]
+      -   id: bandit
+          name: bandit
+          files: .
+          args: ["--ini", "setup.cfg", "-r", "src"]
+          entry: poetry run bandit
+          language: system
+          types: [python]
