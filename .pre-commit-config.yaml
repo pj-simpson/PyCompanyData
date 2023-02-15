@@ -21,19 +21,19 @@ repos:
           files: .
           language: system
           types: [python]
-      # -   id: mypy
-      #     name: mypy
-      #     entry: poetry run mypy
-      #     files: .
-      #     language: system
-      #     types: [python]
-      # -   id: isort
-      #     name: isort
-      #     files: .
-      #     args: ["--profile", "black", "--filter-files"]
-      #     entry: poetry run isort
-      #     language: system
-      #     types: [python]
+      -   id: mypy
+          name: mypy
+          entry: poetry run mypy
+          files: .
+          language: system
+          types: [python]
+      -   id: isort
+          name: isort
+          files: .
+          args: ["--profile", "black", "--filter-files"]
+          entry: poetry run isort
+          language: system
+          types: [python]
       -   id: bandit
           name: bandit
           files: .

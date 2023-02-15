@@ -5,6 +5,7 @@ from pycodat.data_types.accounting.account_transactions import AccountTransactio
 from pycodat.data_types.accounting.accounts import Account
 from pycodat.data_types.accounting.bills import Bill
 from pycodat.data_types.accounting.invoices import Invoice
+from pycodat.data_types.accounting.payments import Payment
 from pycodat.data_types.accounting.suppliers import Supplier
 from pycodat.data_types.pagination import PaginatedResponse
 from pycodat.handlers.accounting.account_transaction_handler import (
@@ -13,6 +14,7 @@ from pycodat.handlers.accounting.account_transaction_handler import (
 from pycodat.handlers.accounting.accounts_handler import AccountsHandler
 from pycodat.handlers.accounting.bills_handler import BillsHandler
 from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
+from pycodat.handlers.accounting.payments_handler import PaymentsHandler
 from pycodat.handlers.accounting.suppliers_handler import SuppliersHandler
 
 
@@ -356,3 +358,29 @@ class AccountingClient(BaseClient):
         """
         invoice_handler = InvoicesHandler(self.key, self.env)
         return invoice_handler.get_single_invoice(company_id, invoice_id)
+
+    def get_payments(
+        self, company_id: str, query: str = None, order_by: str = None
+    ) -> List[Payment]:
+        """ """
+        payments_handler = PaymentsHandler(self.key, self.env)
+        return payments_handler.get_all_payments(company_id, query, order_by)
+
+    def get_payment_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 100,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[Payment]:
+        """ """
+        payments_handler = PaymentsHandler(self.key, self.env)
+        return payments_handler.get_page_of_payments(
+            company_id, page_number, page_size, query, order_by
+        )
+
+    def get_payment(self, company_id: str, payment_id: str) -> Payment:
+        """ """
+        payments_handler = PaymentsHandler(self.key, self.env)
+        return payments_handler.get_single_payment(company_id, payment_id)
