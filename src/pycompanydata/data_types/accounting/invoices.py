@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-from pycodat.data_types.accounting.typed_refs import (
+from pycompanydata.data_types.accounting.typed_refs import (
     AccountRef,
     CategoryRef,
     CustomerRef,

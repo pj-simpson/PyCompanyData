@@ -1,8 +1,8 @@
-from pycodat.data_types.platform.datasetmetadata import (
+from pycompanydata.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
 )
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.handlers.base import BaseHandler
 
 
 class DataSetHandler(BaseHandler):

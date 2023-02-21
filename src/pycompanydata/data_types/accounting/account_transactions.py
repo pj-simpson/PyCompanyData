@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-from pycodat.data_types.pagination import PaginatedResponse
+from pycompanydata.data_types.pagination import PaginatedResponse
 
 
 class BankAccountRef(BaseModel):

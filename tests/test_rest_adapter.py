@@ -1,8 +1,8 @@
 import pytest
 import requests
 
-from pycodat.data_types.platform.exceptions import CodatException
-from pycodat.rest_adapter import RestAdapter
+from pycompanydata.data_types.platform.exceptions import CodatException
+from pycompanydata.rest_adapter import RestAdapter
 
 
 class TestRestAdapterInit:

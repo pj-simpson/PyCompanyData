@@ -1,19 +1,19 @@
 import pytest
 
-from pycodat.clients.platform_client import PlatformClient
-from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import DataConnection
-from pycodat.data_types.platform.datasetmetadata import (
+from pycompanydata.clients.platform_client import PlatformClient
+from pycompanydata.data_types.platform.company import Company
+from pycompanydata.data_types.platform.connections import DataConnection
+from pycompanydata.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
 )
-from pycodat.data_types.platform.datastatus import DataStatus
-from pycodat.data_types.platform.syncsettings import SyncSettings
-from pycodat.handlers.platform.companyhandler import CompanyHandler
-from pycodat.handlers.platform.connectionhandler import ConnectionHandler
-from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
-from pycodat.handlers.platform.datastatushandler import DataStatusHandler
-from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
+from pycompanydata.data_types.platform.datastatus import DataStatus
+from pycompanydata.data_types.platform.syncsettings import SyncSettings
+from pycompanydata.handlers.platform.companyhandler import CompanyHandler
+from pycompanydata.handlers.platform.connectionhandler import ConnectionHandler
+from pycompanydata.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycompanydata.handlers.platform.datastatushandler import DataStatusHandler
+from pycompanydata.handlers.platform.syncsettingshandler import SyncSettingHandler
 
 
 class TestPlatformClientClass:

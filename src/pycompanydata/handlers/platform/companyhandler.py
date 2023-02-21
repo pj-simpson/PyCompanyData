@@ -1,8 +1,8 @@
 from typing import List
 
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.data_types.platform.company import Company
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.data_types.platform.company import Company
+from pycompanydata.handlers.base import BaseHandler
 
 
 def set_env_and_keys_for_many_companies(

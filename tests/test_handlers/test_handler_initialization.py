@@ -1,15 +1,15 @@
 import pytest
 
-from pycodat.handlers.accounting.account_transaction_handler import (
+from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-from pycodat.handlers.platform.companyhandler import CompanyHandler
-from pycodat.handlers.platform.connectionhandler import ConnectionHandler
-from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
-from pycodat.handlers.platform.datastatushandler import DataStatusHandler
-from pycodat.handlers.platform.syncsettingshandler import SyncSettingHandler
-from pycodat.rest_adapter import RestAdapter
+from pycompanydata.handlers.accounting.accounts_handler import AccountsHandler
+from pycompanydata.handlers.platform.companyhandler import CompanyHandler
+from pycompanydata.handlers.platform.connectionhandler import ConnectionHandler
+from pycompanydata.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycompanydata.handlers.platform.datastatushandler import DataStatusHandler
+from pycompanydata.handlers.platform.syncsettingshandler import SyncSettingHandler
+from pycompanydata.rest_adapter import RestAdapter
 
 
 class TestHandlersInitialization:

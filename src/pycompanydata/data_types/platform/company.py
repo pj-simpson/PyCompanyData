@@ -3,21 +3,21 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-from pycodat.data_types.accounting.account_transactions import AccountTransaction
-from pycodat.data_types.accounting.accounts import Account
-from pycodat.data_types.accounting.invoices import Invoice
-from pycodat.data_types.platform.connections import DataConnection
-from pycodat.data_types.platform.datasetmetadata import (
+from pycompanydata.data_types.accounting.account_transactions import AccountTransaction
+from pycompanydata.data_types.accounting.accounts import Account
+from pycompanydata.data_types.accounting.invoices import Invoice
+from pycompanydata.data_types.platform.connections import DataConnection
+from pycompanydata.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
 )
-from pycodat.handlers.accounting.account_transaction_handler import (
+from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
-from pycodat.handlers.platform.connectionhandler import ConnectionHandler
-from pycodat.handlers.platform.datasetmetadatahandler import DataSetHandler
+from pycompanydata.handlers.accounting.accounts_handler import AccountsHandler
+from pycompanydata.handlers.accounting.invoices_handler import InvoicesHandler
+from pycompanydata.handlers.platform.connectionhandler import ConnectionHandler
+from pycompanydata.handlers.platform.datasetmetadatahandler import DataSetHandler
 
 from ...handlers.platform.datastatushandler import DataStatusHandler
 from ...handlers.platform.syncsettingshandler import SyncSettingHandler

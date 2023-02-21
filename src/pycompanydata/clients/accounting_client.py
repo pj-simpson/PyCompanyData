@@ -1,21 +1,21 @@
 from typing import List
 
-from pycodat.clients.platform_client import BaseClient
-from pycodat.data_types.accounting.account_transactions import AccountTransaction
-from pycodat.data_types.accounting.accounts import Account
-from pycodat.data_types.accounting.bills import Bill
-from pycodat.data_types.accounting.invoices import Invoice
-from pycodat.data_types.accounting.payments import Payment
-from pycodat.data_types.accounting.suppliers import Supplier
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.handlers.accounting.account_transaction_handler import (
+from pycompanydata.clients.platform_client import BaseClient
+from pycompanydata.data_types.accounting.account_transactions import AccountTransaction
+from pycompanydata.data_types.accounting.accounts import Account
+from pycompanydata.data_types.accounting.bills import Bill
+from pycompanydata.data_types.accounting.invoices import Invoice
+from pycompanydata.data_types.accounting.payments import Payment
+from pycompanydata.data_types.accounting.suppliers import Supplier
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-from pycodat.handlers.accounting.bills_handler import BillsHandler
-from pycodat.handlers.accounting.invoices_handler import InvoicesHandler
-from pycodat.handlers.accounting.payments_handler import PaymentsHandler
-from pycodat.handlers.accounting.suppliers_handler import SuppliersHandler
+from pycompanydata.handlers.accounting.accounts_handler import AccountsHandler
+from pycompanydata.handlers.accounting.bills_handler import BillsHandler
+from pycompanydata.handlers.accounting.invoices_handler import InvoicesHandler
+from pycompanydata.handlers.accounting.payments_handler import PaymentsHandler
+from pycompanydata.handlers.accounting.suppliers_handler import SuppliersHandler
 
 
 class AccountingClient(BaseClient):

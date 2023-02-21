@@ -1,8 +1,8 @@
 import pytest
 
-from pycodat.clients.accounting_client import AccountingClient
-from pycodat.clients.base_client import BaseClient
-from pycodat.clients.platform_client import PlatformClient
+from pycompanydata.clients.accounting_client import AccountingClient
+from pycompanydata.clients.base_client import BaseClient
+from pycompanydata.clients.platform_client import PlatformClient
 
 
 @pytest.mark.parametrize("client", [BaseClient, AccountingClient, PlatformClient])

@@ -1,12 +1,12 @@
-# PyCodat
+# PyCompanyData
 
-PyCodat is an **unofficial** Python client library for the Codat API.
+PyCompanyData is an **unofficial** Python client library for the Codat API.
 
 <!-- Badges: -->
 
 [![CI](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml/badge.svg)](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml)
 
-PyCodat is a package which harnesses the power of [Requests](https://github.com/psf/requests) 
+PyCompanyData is a package which harnesses the power of [Requests](https://github.com/psf/requests) 
 and [Pydantic](https://github.com/pydantic/pydantic),
 (two of the most esteemed Python projects around), making it easy to
 interact with resources in the Codat Platform from your Python code.
@@ -20,7 +20,7 @@ pip install pycodat
 
 ```python
 # import the main client 
-from pycodat import Codat
+from pycompanydata import Codat
 
 # enter credentials
 client = Codat('your-API-key')
@@ -47,4 +47,4 @@ See disclaimer for context, but guidelines will be coming soon
 
 ## Docs
 
-Aim is improve documentation asap. For the time being, if you wish to see whats currently possible with PyCodat, you can view the methods in *src/pycodat/clients/platform_client* and *src/pycodat/clients/accounting_client*. We have implemented 'GET' methods only on a subset of the endpoints to manage the Codat Platform as well as the Accounting API.
+Aim is improve documentation asap. For the time being, if you wish to see whats currently possible with PyCompanyData, you can view the methods in *src/pycodat/clients/platform_client* and *src/pycodat/clients/accounting_client*. We have implemented 'GET' methods only on a subset of the endpoints to manage the Codat Platform as well as the Accounting API.

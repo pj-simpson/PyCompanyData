@@ -1,8 +1,8 @@
 from typing import List
 
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.data_types.platform.connections import DataConnection
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.data_types.platform.connections import DataConnection
+from pycompanydata.handlers.base import BaseHandler
 
 
 class ConnectionHandler(BaseHandler):

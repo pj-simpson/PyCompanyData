@@ -1,6 +1,6 @@
 import toml
 
-from pycodat import __version__
+from pycompanydata import __version__
 
 
 def test_version():

@@ -1,7 +1,7 @@
 from typing import Any, List, TypeVar
 
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.rest_adapter import RestAdapter
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.rest_adapter import RestAdapter
 
 T = TypeVar("T")
 

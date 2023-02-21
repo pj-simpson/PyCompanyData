@@ -1,5 +1,5 @@
-from pycodat.data_types.platform.datastatus import DataStatus
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.platform.datastatus import DataStatus
+from pycompanydata.handlers.base import BaseHandler
 
 
 class DataStatusHandler(BaseHandler):

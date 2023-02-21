@@ -1,5 +1,5 @@
-from pycodat.data_types.platform.syncsettings import SyncSettings
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.platform.syncsettings import SyncSettings
+from pycompanydata.handlers.base import BaseHandler
 
 
 class SyncSettingHandler(BaseHandler):

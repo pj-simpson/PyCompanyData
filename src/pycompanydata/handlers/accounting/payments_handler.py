@@ -1,8 +1,8 @@
 import typing
 
-from pycodat.data_types.accounting.payments import Payment
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.accounting.payments import Payment
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.handlers.base import BaseHandler
 
 
 class PaymentsHandler(BaseHandler):

@@ -3,14 +3,17 @@ import datetime
 import pytest
 
 # from pycodat.data_types.pagination import LinkHref, PaginatedResponse, PaginationLinks
-from pycodat.data_types.platform.company import Company
-from pycodat.data_types.platform.connections import DataConnection, DataConnectionError
-from pycodat.data_types.platform.datasetmetadata import (
+from pycompanydata.data_types.platform.company import Company
+from pycompanydata.data_types.platform.connections import (
+    DataConnection,
+    DataConnectionError,
+)
+from pycompanydata.data_types.platform.datasetmetadata import (
     DataSetMetadata,
     DataSetMetaDataPaginatedResponse,
 )
-from pycodat.data_types.platform.datastatus import DataStatus, DataTypeStatus
-from pycodat.data_types.platform.syncsettings import SyncSetting, SyncSettings
+from pycompanydata.data_types.platform.datastatus import DataStatus, DataTypeStatus
+from pycompanydata.data_types.platform.syncsettings import SyncSetting, SyncSettings
 
 
 @pytest.fixture

@@ -1,8 +1,8 @@
 from typing import List
 
-from pycodat.data_types.accounting.account_transactions import AccountTransaction
-from pycodat.data_types.pagination import PaginatedResponse
-from pycodat.handlers.base import BaseHandler
+from pycompanydata.data_types.accounting.account_transactions import AccountTransaction
+from pycompanydata.data_types.pagination import PaginatedResponse
+from pycompanydata.handlers.base import BaseHandler
 
 
 class AccountTransactionHandler(BaseHandler):

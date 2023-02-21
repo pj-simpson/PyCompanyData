@@ -1,13 +1,16 @@
-from pycodat.clients.accounting_client import AccountingClient
-from pycodat.data_types.accounting.account_transactions import (
+from pycompanydata.clients.accounting_client import AccountingClient
+from pycompanydata.data_types.accounting.account_transactions import (
     AccountTransaction,
     AccountTransactionsPaginatedResponse,
 )
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.handlers.accounting.account_transaction_handler import (
+from pycompanydata.data_types.accounting.accounts import (
+    Account,
+    AccountsPaginatedResponse,
+)
+from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
+from pycompanydata.handlers.accounting.accounts_handler import AccountsHandler
 
 
 class TestAccountingClientClass:

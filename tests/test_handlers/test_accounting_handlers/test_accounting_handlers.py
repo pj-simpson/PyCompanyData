@@ -1,10 +1,10 @@
-from pycodat.data_types.accounting.account_transactions import AccountTransaction
-from pycodat.data_types.accounting.accounts import Account
-from pycodat.handlers.accounting.account_transaction_handler import (
+from pycompanydata.data_types.accounting.account_transactions import AccountTransaction
+from pycompanydata.data_types.accounting.accounts import Account
+from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
-from pycodat.handlers.accounting.accounts_handler import AccountsHandler
-from pycodat.rest_adapter import RestAdapter
+from pycompanydata.handlers.accounting.accounts_handler import AccountsHandler
+from pycompanydata.rest_adapter import RestAdapter
 
 
 class TestAccountHandlers:

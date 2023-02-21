@@ -2,7 +2,7 @@ import datetime
 
 import pytest
 
-from pycodat.data_types.accounting.account_transactions import (
+from pycompanydata.data_types.accounting.account_transactions import (
     AccountTransaction,
     AccountTransactionsPaginatedResponse,
     BankAccountRef,
@@ -10,8 +10,11 @@ from pycodat.data_types.accounting.account_transactions import (
     Metadata,
     RecordRef,
 )
-from pycodat.data_types.accounting.accounts import Account, AccountsPaginatedResponse
-from pycodat.data_types.pagination import LinkHref, PaginationLinks
+from pycompanydata.data_types.accounting.accounts import (
+    Account,
+    AccountsPaginatedResponse,
+)
+from pycompanydata.data_types.pagination import LinkHref, PaginationLinks
 
 
 @pytest.fixture
