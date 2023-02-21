@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pycodat"
-version = "0.22.12.1"
+version = "0.1.1"
 description = "A Python client library for interacting with the Codat API"
 authors = ["Peter Simpson <p.simpson@codat.io>"]
 

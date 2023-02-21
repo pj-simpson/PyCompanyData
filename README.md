@@ -1,24 +1,21 @@
 # PyCodat
 
-PyCodat is a Python client library for the Codat API.
-
+PyCodat is an **unofficial** Python client library for the Codat API.
 
 <!-- Badges: -->
 
 [![CI](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml/badge.svg)](https://github.com/pj-simpson/pycodat/actions/workflows/github-actions.yml)
 
-
-PyCodat is a Python package which harnesses the power of [Requests](https://github.com/psf/requests) 
+PyCodat is a package which harnesses the power of [Requests](https://github.com/psf/requests) 
 and [Pydantic](https://github.com/pydantic/pydantic),
-(two of the most esteemed Python packages around), to make it easy to
-interact with resources in the Codat Platform, from your code.
+(two of the most esteemed Python projects around), making it easy to
+interact with resources in the Codat Platform from your Python code.
 
 ## Installation
 
 ```bash
-pip install --index-url https://peterprivatepypi.xyz/simple/ pycodat
+pip install pycodat
 ```
-
 ## Quick Start
 
 ```python
@@ -28,37 +25,26 @@ from pycodat import Codat
 # enter credentials
 client = Codat('your-API-key')
 
-# get some companies
-companies = client.get_companies()
-
-# check the type of whats been returned
-type(companies)
-## <class 'pycodat.data_types.platform.company.CompanyPaginatedResponse'>
+# get a page of companies
+companies = client.get_companies_page()
 
 # loop over the companies and print out their names
 for company in companies.results:
-    print(company)
+    print(company.name)
 
 ```
+
+## Disclaimer
+
+The origin of the package comes from Codat's internal Hackathon, which was held in Jan 2023.
+The authors of the package are Codat staff, but **this isnt an officially supported product**. Please
+treat it as an example of what is possible to achieve with the Codat Public REST API. Many thanks to 
+Tim Hoare, John Hicks and Amber Lewis for their contributions and being on the Hackathon team!
 
 ## Contributing
 
-### Install Poetry
-You'll need to install [Poetry (a Python package manager)](https://python-poetry.org/docs/#installing-with-the-official-installer)
-```PowerShell
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
-[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$env:APPDATA\Python\Scripts\", [System.EnvironmentVariableTarget]::User)
-$env:path += ";$env:AppData\Python\Scripts;"
-```
+See disclaimer for context, but guidelines will be coming soon
 
-### Initialize Poetry
-```PowerShell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-poetry shell
-poetry install
-```
-tbc...
+## Docs
 
-## License
-
-tbc... https://choosealicense.com/licenses/
+Aim is improve documentation asap. For the time being, if you wish to see whats currently possible with PyCodat, you can view the methods in *src/pycodat/clients/platform_client* and *src/pycodat/clients/accounting_client*. We have implemented 'GET' methods only on a subset of the endpoints to manage the Codat Platform as well as the Accounting API.
