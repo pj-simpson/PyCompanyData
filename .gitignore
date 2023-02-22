@@ -161,3 +161,8 @@ cython_debug/
 
 # My little scratch script
 tryout*
+
+#Vagrant stuff
+.vargrant/
+VagrantFile
+vagrantsetup.sh
