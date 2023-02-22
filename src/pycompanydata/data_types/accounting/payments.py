@@ -5,20 +5,11 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-
-class CustomerRef(BaseModel):
-    id: str
-    companyName: Optional[str]
-
-
-class AccountRef(BaseModel):
-    id: str
-    name: Optional[str]
-
-
-class PaymentMethodRef(BaseModel):
-    id: str
-    name: Optional[str]
+from pycompanydata.data_types.accounting.typed_refs import (
+    AccountRef,
+    CustomerRef,
+    PaymentMethodRef,
+)
 
 
 class Link(BaseModel):

@@ -3,17 +3,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
+from pycompanydata.data_types.accounting.typed_refs import BankAccountRef, RecordRef
 from pycompanydata.data_types.pagination import PaginatedResponse
-
-
-class BankAccountRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-
-
-class RecordRef(BaseModel):
-    id: str
-    dataType: Optional[str]
 
 
 class Line(BaseModel):

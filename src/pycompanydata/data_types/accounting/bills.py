@@ -2,51 +2,17 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-
-class SupplierRef(BaseModel):
-    id: Optional[str]
-    supplierName: Optional[str]
-
-
-class PurchaseOrderRef(BaseModel):
-    id: Optional[str]
-    purchaseOrderNumber: Optional[str]
-
-
-class AccountRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-
-
-class TaxRateRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-    effectiveTaxRate: Optional[int]
-
-
-class ItemRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-
-
-class TrackingCategoryRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-
-
-class CategoryRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-
-
-class CustomerRef(BaseModel):
-    id: Optional[str]
-    companyName: Optional[str]
-
-
-class ProjectRef(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
+from pycompanydata.data_types.accounting.typed_refs import (
+    AccountRef,
+    CategoryRef,
+    CustomerRef,
+    ItemRef,
+    ProjectRef,
+    PurchaseOrderRef,
+    SupplierRef,
+    TaxRateRef,
+    TrackingCategoryRef,
+)
 
 
 class Tracking(BaseModel):
