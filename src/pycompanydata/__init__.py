@@ -1,4 +1,4 @@
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 from pycompanydata.clients.accounting_client import AccountingClient
 from pycompanydata.clients.platform_client import PlatformClient

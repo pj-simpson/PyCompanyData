@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyCompanyData"
-version = "0.1.2"
+version = "0.1.3"
 description = "A Python client library for interacting with the Codat API"
 authors = ["Peter Simpson <peter_joseph_simpson@hotmail.com>"]
 packages = [
