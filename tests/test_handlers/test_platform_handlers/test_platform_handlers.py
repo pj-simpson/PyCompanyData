@@ -1,10 +1,7 @@
 from pycompanydata.data_types.pagination import PaginatedResponse
 from pycompanydata.data_types.platform.company import Company
 from pycompanydata.data_types.platform.connections import DataConnection
-from pycompanydata.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+from pycompanydata.data_types.platform.datasetmetadata import DataSetMetadata
 from pycompanydata.data_types.platform.datastatus import DataStatus
 from pycompanydata.data_types.platform.syncsettings import SyncSettings
 from pycompanydata.handlers.platform.companyhandler import CompanyHandler
@@ -77,7 +74,7 @@ class TestConnectionHandlers:
 
 
 class TestDataSetHandlers:
-    def test_dataset_handler_get_data_set_history(
+    def test_dataset_handler_get_data_set_history_page(
         self,
         monkeypatch,
         data_sets_raw_json,
@@ -88,9 +85,9 @@ class TestDataSetHandlers:
         handler = DataSetHandler(basic_auth_key, "prod")
         company_id = random_guid()
 
-        result = handler.get_all_data_sets(company_id)
+        result = handler.get_page_of_data_sets(company_id, 1, 100)
 
-        assert type(result) == DataSetMetaDataPaginatedResponse
+        assert type(result) == PaginatedResponse[DataSetMetadata]
 
     def test_dataset_handler_get_single_data_set(
         self,
@@ -127,7 +124,7 @@ class TestSyncSettingHandlers:
 
 
 class TestDataStatusHandlers:
-    def test_data_status_handler_get_sync_settings(
+    def test_data_status_handler_get_data_satus(
         self,
         monkeypatch,
         data_status_raw_json,

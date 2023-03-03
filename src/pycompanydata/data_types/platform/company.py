@@ -7,10 +7,7 @@ from pycompanydata.data_types.accounting.account_transactions import AccountTran
 from pycompanydata.data_types.accounting.accounts import Account
 from pycompanydata.data_types.accounting.invoices import Invoice
 from pycompanydata.data_types.platform.connections import DataConnection
-from pycompanydata.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+from pycompanydata.data_types.platform.datasetmetadata import DataSetMetadata
 from pycompanydata.handlers.accounting.account_transaction_handler import (
     AccountTransactionHandler,
 )
@@ -64,7 +61,7 @@ class Company(BaseModel):
         sync_settings = sync_settings_handler.get_sync_settings(self.id)
         return sync_settings
 
-    def get_data_sets(self) -> DataSetMetaDataPaginatedResponse:
+    def get_data_sets(self) -> List[DataSetMetadata]:
 
         data_set_metadata_handler = DataSetHandler(self.key, self.env)
         data_set_metadata_history = data_set_metadata_handler.get_all_data_sets(self.id)

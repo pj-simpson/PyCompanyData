@@ -153,8 +153,8 @@ def connections_raw_json():
 
 
 @pytest.fixture
-def data_sets_raw_json():
-    def _data_sets_raw_json(*args, **kwargs):
+def data_sets_paged_raw_json():
+    def _data_sets_paged_raw_json(*args, **kwargs):
         return {
             "results": [
                 {
@@ -171,6 +171,50 @@ def data_sets_raw_json():
                     "isErrored": True,
                     "validationinformationUrl": "string",
                 }
+            ],
+            "pageNumber": 0,
+            "pageSize": 0,
+            "totalResults": 0,
+            "_links": {
+                "self": {"href": "string"},
+                "current": {"href": "string"},
+                "next": {"href": "string"},
+                "previous": {"href": "string"},
+            },
+        }
+
+    return _data_sets_paged_raw_json
+
+
+@pytest.fixture
+def data_sets_raw_json():
+    def _data_sets_raw_json(*args, **kwargs):
+        return {
+            "results": [
+                {
+                    "id": "57ff72c2-730f-4457-aab0-485579c297ac",
+                    "companyId": "e7d4f083-4ca5-4048-b6ee-9054849b6f0e",
+                    "connectionId": "ef11cc15-ef97-441f-a13c-6f14e2f914dd",
+                    "dataType": "profitAndLoss",
+                    "status": "Complete",
+                    "requested": "2023-03-02T21:47:12.9844827Z",
+                    "completed": "2023-03-02T21:47:28.8051033Z",
+                    "progress": 100,
+                    "isCompleted": True,
+                    "isErrored": False,
+                },
+                {
+                    "id": "37041ea1-1c74-481e-ad5b-41f6044d265a",
+                    "companyId": "e7d4f083-4ca5-4048-b6ee-9054849b6f0e",
+                    "connectionId": "ef11cc15-ef97-441f-a13c-6f14e2f914dd",
+                    "dataType": "suppliers",
+                    "status": "Complete",
+                    "requested": "2023-03-02T15:44:17.6802973Z",
+                    "completed": "2023-03-02T15:44:19.6000139Z",
+                    "progress": 100,
+                    "isCompleted": True,
+                    "isErrored": False,
+                },
             ],
             "pageNumber": 0,
             "pageSize": 0,

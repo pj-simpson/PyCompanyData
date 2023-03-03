@@ -4,10 +4,7 @@ from pycompanydata.clients.base_client import BaseClient
 from pycompanydata.data_types.pagination import PaginatedResponse
 from pycompanydata.data_types.platform.company import Company
 from pycompanydata.data_types.platform.connections import DataConnection
-from pycompanydata.data_types.platform.datasetmetadata import (
-    DataSetMetadata,
-    DataSetMetaDataPaginatedResponse,
-)
+from pycompanydata.data_types.platform.datasetmetadata import DataSetMetadata
 from pycompanydata.data_types.platform.datastatus import DataStatus
 from pycompanydata.data_types.platform.syncsettings import SyncSettings
 from pycompanydata.handlers.platform.companyhandler import CompanyHandler
@@ -117,20 +114,40 @@ class PlatformClient(BaseClient):
         )
         return connection
 
-    def get_data_sets(
-        self, company_id: str, **kwargs
-    ) -> DataSetMetaDataPaginatedResponse:
+    def get_data_sets(self, company_id: str, **kwargs) -> List[DataSetMetadata]:
         """Gets the metadata history for a company
 
         :param company_id: Unique identifier for a company
         :type company_id: str
         :return: A list of all the data sets and their metadata
-        :rtype: DataSetMetaDataPaginatedResponse
+        :rtype: List[DataSetMetadata]
         """
 
         data_set_metadata_handler = DataSetHandler(self.key, self.env)
         data_set_metadata_history = data_set_metadata_handler.get_all_data_sets(
             company_id, **kwargs
+        )
+        return data_set_metadata_history
+
+    def get_data_sets_page(
+        self,
+        company_id: str,
+        page_number: int = 1,
+        page_size: int = 100,
+        query: str = None,
+        order_by: str = None,
+    ) -> PaginatedResponse[DataSetMetadata]:
+        """Gets the metadata history for a company
+
+        :param company_id: Unique identifier for a company
+        :type company_id: str
+        :return: A list of all the data sets and their metadata
+        :rtype: PaginatedResponse[DataSetMetadata]
+        """
+
+        data_set_metadata_handler = DataSetHandler(self.key, self.env)
+        data_set_metadata_history = data_set_metadata_handler.get_page_of_data_sets(
+            company_id, page_number, page_size, query, order_by
         )
         return data_set_metadata_history
 
